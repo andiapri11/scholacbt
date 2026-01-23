@@ -1,187 +1,80 @@
-# GarudaCBT
-## Last version: 1.5.3  (FIXED)
-____
-#### LAPORAN BUG SILAKAN KUNJUNGI GROUP TELEGRAM [DISINI](http://t.me/garudacbt)
-____
-Versi default: 1.5.3 BETA, untuk download v.1.5.2. [ada disini](https://github.com/garudacbt/cbt/tree/1.5.2-build-2024-05-17)
-____
+# Schola CBT
 
-### CHANGELOG:
-#### Added
-- Support PHP 7.4 ~ 8.3
-- Login CBT
-- Update foto siswa perkelas
-- Auto logout admin setelah ganti password
-- Import Guru dengan foto
-- Editor Header jawaban essai di ujian siswa
-- Equation LaTex
+**Schola CBT** (Computer Based Test) adalah aplikasi ujian online berbasis web yang modern, aman, dan mudah digunakan. Aplikasi ini dirancang untuk memudahkan sekolah dalam melaksanakan ujian berbasis komputer (CBT) dengan fitur-fitur yang lengkap dan tampilan yang *user-friendly*, baik untuk siswa maupun guru.
 
-#### Changed
-- Font Arabic Calibri
-- Remove vendor folder
+<p align="center">
+  <img src="assets/img/garuda.svg" alt="Schola CBT Logo" width="150" height="auto" />
+</p>
 
-#### Fixed
-- Zoom in/out soal siswa
-- Koreksi Ujian
-- Rekap ujian
-- Pengawas undefined
-- Jawaban isian singkat dianggap salah
-- Jawaban soal menjodohkan dianggap belum menjawab
-- Hasil export nilai Excel header tabel tidak pas ketika tidak ada soal PG
-- Nilai siswa ketika diulang
-- Tanda petik di header Kartu Ujian, Daftar Kehadiran dan Berita Acara
-- Nilai harian (eLearning)
-- Edit Materi (eLearning)
-- Some minor bugs
+---
 
-___________
+## 🚀 Fitur Utama
 
-## NOTE:
-Aplikasi ini tidak diperjual belikan alias gratis 100% dengan lisensi MIT yang artinya bebas untuk memodifikasi dengan syarat tetap mencantumkan sumber asal.
+### 🎓 Untuk Siswa
+*   **Dashboard Modern**: Tampilan dashboard yang bersih, informatif, dan responsif (nyaman di HP/Tablet).
+*   **Kalender Ujian**: Melihat jadwal ujian yang akan datang dalam format kalender yang rapi.
+*   **Ujian Online**: Antarmuka ujian yang fokus, dengan dukungan berbagai tipe soal (Pilihan Ganda, Esai, Penjodohan, dll).
+*   **Riwayat Nilai**: Akses cepat untuk melihat hasil dan riwayat ujian.
 
-Kami selaku pengembang aplikasi ini tidak bertanggung-jawab:
-- jika ada yang mengharuskan membayar untuk mendapatkan aplikasi ini,
-- adanya masalah dari aplikasi yang sudah dimodif atau dirubah fiturnya oleh pihak lain.
-______________
-- [HOME](https://garudacbt.github.io/cbt)
-- [TUTORIAL INSTALL](https://github.com/garudacbt/cbt/wiki)
+### 👨‍🏫 Untuk Guru & Admin
+*   **Bank Soal**: Manajemen bank soal yang mudah (Import/Export Word/Excel).
+*   **Manajemen Jadwal**: Mengatur jadwal ujian, sesi, dan ruang kelas dengan fleksibel.
+*   **Monitoring Ujian**: Memantau status ujian siswa secara *real-time* (sedang mengerjakan, selesai, dll).
+*   **Analisis Nilai**: Cetak hasil ujian, analisis butir soal, dan rekap nilai otomatis.
+*   **Cetak Kartu**: Otomatisasi cetak kartu peserta dan daftar hadir.
 
-____
-## Download
-Harap download aplikasi dari tombol [<> Code] -> Download zip
+---
 
------
-## VIRTUAL BOX (VHD):
-https://github.com/origrata/garudacbt-vdi
+## 🛠️ Teknologi
 
-----
-## Install
-* Download Aplikasi dari menu **Code => Download ZIP**
-* Extract di folder **htdocs** jika menggunakan XAMPP, atau folder **www** jika mengonakan Laragon
-* Lengkapnya sialhkan ke [TUTORIAL INSTALL](https://github.com/garudacbt/cbt/wiki)
-----
-## Update
-* Download Aplikasi dari menu **Code => Download ZIP**
-* Extract dan replace semua code di folder aplikasi
-* sesuaikan nama database yang digunakan
-* backup database untuk berjaga-jaga
-* jalankan menu **update** di menu DATABASE => UPDATE
-______
-### MENU FITUR
-1. DATA MASTER
-   * Beranda
-   * Data Umum
-      * Tahun Pelajaran
-      * Jurusan
-      * Mata Pelajaran
-      * Ekstrakurikuler
-      * Siswa
-      * Kelas / Rombel
-      * Guru
-   * Data E-Learning
-      * Jadwal Pelajaran
-      * Materi
-      * Tugas
-      * Jadwal Materi/Tugas
-   * Data Ujian
-      * Jenis Ujian
-      * Sesi
-      * Ruang
-      * Atur Ruang dan Sesi
-      * Atur Nomor Peserta
-      * Bank Soal
-      * Jadwal
-      * Alokasi Waktu
-      * Token
-   * Pengumuman
+Aplikasi ini dibangun menggunakan teknologi web yang handal dan stabil:
+*   **Backend**: PHP (CodeIgniter 3 Framework)
+*   **Database**: MySQL
+*   **Frontend**: HTML5, CSS3, JavaScript (jQuery), Bootstrap/AdminLTE
+*   **Server**: Apache/Nginx
 
-2. PELAKSANAAN
-   * Hasil E-Learning
-      * Nilai Harian
-      * Kehadiran Harian
-      * Kehadiran Bulanan
-      * Rekap Nilai
-   * Pelaksanaan Ujian
-      * Cetak
-      * Status Siswa
-      * Hasil Ujian
-      * Analisis Soal
-      * Rekap Nilai Ujian
+---
 
-3. RAPOR
-   * Setting Rapor
-   * Kumpulan Nilai Rapor
-   * Buku Induk
-   * Alumni
+## 📦 Instalasi
 
-4. PENGATURAN
-   * Profile Sekolah
-   * User Management
-      * Administrator
-      * Guru
-      * Siswa
-   * Database
-      * Backup/Restore
-      * Update
+### Persyaratan Server
+*   PHP >= 7.6
+*   MySQL >= 5.7
+*   Web Server (Apache/Nginx)
 
-6. LOGOUT
+### Cara Install
+1.  **Clone Repository**
+    ```bash
+    git clone https://github.com/andiapri11/scholacbt.git
+    ```
+2.  **Konfigurasi Database**
+    *   Buat database baru di MySQL (contoh: `cbt_db`).
+    *   Import file database SQL (jika tersedia) atau biarkan aplikasi melakukan migrasi awal.
+    *   Sesuaikan konfigurasi di `application/config/database.php`:
+        ```php
+        'hostname' => 'localhost',
+        'username' => 'root',
+        'password' => 'password_anda',
+        'database' => 'cbt_db',
+        ```
+3.  **Konfigurasi Base URL**
+    *   Buka `application/config/config.php` dan pastikan `base_url` sudah sesuai. Aplikasi ini sudah dikonfigurasi untuk mendeteksi URL secara otomatis.
+4.  **Akses Aplikasi**
+    *   Buka browser dan akses `http://localhost/scholacbt` (sesuaikan dengan path instalasi Anda).
 
-___________
-## version: 1.5.2
-___________
-#### Added
-- Soal gambar menjodohkan
-- Soal gambar tanpa text
-- Search/paging rekap nilai
-- Search kelas/rombel
-- Search status ujian
-- NIS list siswa di menu edit kelas
-- Detect new tab ketika siswa sedang ujian
+---
 
-#### Fixed
-- Rekap nilai 0
-- Detail soal
-- Typo
-- Edit soal gambar hang
-- Gambar soal di menu koreksi
-- Hapus jadwal ujian
-- Hapus siswa dari rombel
-- Download soal ujian KP
-- Edit soal ketika ujian berlangsung
-- Mapel SD/MI
-- Cetak rapor PTS beda predikat
-- Kehadiran rapor di DKN
-- Rapor prestasi berbeda dengan arsip
-- Rapor kesehatan
-- Ttd kepsek rapor akhir
-- Mapel rapor berbeda dengan arsip
+## 🔐 Akun Default
 
-- Struktur organisasi #admin
-- Reset waktu ujian siswa #pengawas
-- Search daftar siswa ada siswa lain kelas #wali kelas
-- Tugas/Materi guru membaca kelas lain #guru
-- Semua guru dianggap pengawas #pengawas
-- Soal menjodohkan dianggap terjawab #siswa
+*   **Administrator**:
+    *   Username: `admin`
+    *   Password: `password` (atau sesuai yang di-set saat instalasi awal)
 
-______
-MIT License
+---
 
-Copyright (c) 2020 GarudaCBT
+## 📄 Lisensi
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Schola CBT dikembangkan untuk tujuan pendidikan. Silakan gunakan dan kembangkan sesuai kebutuhan institusi Anda.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+---
+*Dibuat dengan ❤️ untuk Pendidikan Indonesia.*
