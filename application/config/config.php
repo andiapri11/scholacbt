@@ -11,21 +11,16 @@ date_default_timezone_set('Asia/Jakarta');
 
 // Dynamic Base URL Detection (Handles Proxies/HTTPS)
 $is_https = false;
-if (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) === 'on' || $_SERVER['HTTPS'] == 1)) {
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
     $is_https = true;
-} elseif (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
-    $is_https = true;
-} elseif (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && strtolower($_SERVER['HTTP_X_FORWARDED_SSL']) === 'on') {
-    $is_https = true;
-} elseif (isset($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off') {
-    $is_https = true;
-} elseif (isset($_SERVER['HTTP_X_URL_SCHEME']) && strtolower($_SERVER['HTTP_X_URL_SCHEME']) === 'https') {
+} elseif (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) === 'on' || $_SERVER['HTTPS'] == 1)) {
     $is_https = true;
 }
 
 $scheme = $is_https ? 'https' : 'http';
-$config['base_url'] = "$scheme://" . $_SERVER['HTTP_HOST'];
-$config['base_url'] .= rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/') . '/';
+$base_url = "$scheme://" . $_SERVER['HTTP_HOST'];
+$base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+$config['base_url'] = rtrim($base_url, '/') . '/';
 
 $config['index_page'] = '';
 
