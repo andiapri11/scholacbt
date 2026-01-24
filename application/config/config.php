@@ -11,15 +11,15 @@ date_default_timezone_set('Asia/Jakarta');
 
 // Dynamic Base URL Detection (Handles Proxies/HTTPS)
 $is_https = false;
-if (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) === 'on') {
+if (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) === 'on' || $_SERVER['HTTPS'] == 1)) {
     $is_https = true;
-} elseif (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
-    // Handle comma-separated values (e.g. 'https, http')
-    $protos = explode(',', $_SERVER['HTTP_X_FORWARDED_PROTO']);
-    if (strtolower(trim($protos[0])) === 'https') {
-        $is_https = true;
-    }
+} elseif (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
+    $is_https = true;
+} elseif (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && strtolower($_SERVER['HTTP_X_FORWARDED_SSL']) === 'on') {
+    $is_https = true;
 } elseif (isset($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off') {
+    $is_https = true;
+} elseif (isset($_SERVER['HTTP_X_URL_SCHEME']) && strtolower($_SERVER['HTTP_X_URL_SCHEME']) === 'https') {
     $is_https = true;
 }
 
