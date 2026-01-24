@@ -208,46 +208,44 @@
     $(document).ready(function () {
         $("#tahun").on("click", ".btn-aktif", function () {
             let id = $(this).data("id");
-            var dataTahun = JSON.stringify($('#tahun').tableToJSON());
-            var replaced = dataTahun.replace(/Tahun Pelajaran/g, "tp");
+            // Mapping table headers to match backend expectations
+            var dataTahun = $('#tahun').tableToJSON({
+                ignoreColumns: [1, 3, 4], // Ignore NO, STATUS, AKSI
+                headings: ['id', 'tp']  // Force header names to match PHP expectations
+            });
+            var jsonTahun = JSON.stringify(dataTahun);
 
-            //console.log($('#edittp').serialize() + "&active=" + id + "&tahun=" + replaced);
             swal.fire({
                 text: "Silahkan tunggu....",
-                button: false,
-                closeOnClickOutside: false,
-                closeOnEsc: false,
-                allowEscapeKey: false,
                 allowOutsideClick: false,
                 onOpen: () => {
                     swal.showLoading();
                 }
             });
+
             $.ajax({
                 url: base_url + "datatahun/gantitahun",
-                data: $('#edittp').serialize() + "&active=" + id + "&tahun=" + replaced,
+                data: $('#edittp').serialize() + "&active=" + id + "&tahun=" + jsonTahun,
                 type: "POST",
                 success: function (response) {
                     var title = response.status ? "Berhasil" : "Gagal";
                     var type = response.status ? "success" : "error";
+                    var msg = response.msg || (response.status ? "Tahun Pelajaran berhasil diaktifkan" : "Gagal mengaktifkan Tahun Pelajaran");
 
                     swal.fire({
                         title: title,
-                        text: response.msg,
+                        text: msg,
                         icon: type
                     }).then((result) => {
-                        if (result.value) {
-                            if (response.status) {
-                                window.location.href = base_url + 'datatahun';
-                            }
+                        if (response.status) {
+                            window.location.reload();
                         }
                     });
                 }, error: function (xhr, status, error) {
-                    console.log("error", xhr.responseText);
-                    const err = JSON.parse(xhr.responseText)
+                    console.error("XHR Error:", xhr.responseText);
                     swal.fire({
                         title: "Error",
-                        text: err.Message,
+                        text: "Terjadi kesalahan pada server",
                         icon: "error"
                     });
                 }
@@ -322,33 +320,44 @@
 
         $("#semester").on("click", ".btn-aktif", function () {
             let id = $(this).data("id");
-            var dataSmt = JSON.stringify($('#semester').tableToJSON());
-            //console.log($('#edittp').serialize() + "&active=" + id + "&tahun=" + replaced);
+            // Mapping table headers to match backend expectations (PascalCase 'Semester')
+            var dataSmt = $('#semester').tableToJSON({
+                ignoreColumns: [1, 3], // Ignore NO, STATUS
+                headings: ['id', 'Semester'] // Force header name to match PHP expectations
+            });
+            var jsonSmt = JSON.stringify(dataSmt);
+            
+            swal.fire({
+                text: "Memproses pergantian semester....",
+                allowOutsideClick: false,
+                onOpen: () => {
+                    swal.showLoading();
+                }
+            });
+
             $.ajax({
                 url: base_url + "datatahun/gantisemester",
-                data: $('#edittp').serialize() + "&active=" + id + "&semester=" + dataSmt,
+                data: $('#edittp').serialize() + "&active=" + id + "&semester=" + jsonSmt,
                 type: "POST",
                 success: function (response) {
                     var title = response.status ? "Berhasil" : "Gagal";
                     var type = response.status ? "success" : "error";
+                    var msg = response.msg || (response.status ? "Semester berhasil diaktifkan" : "Gagal mengaktifkan Semester");
 
                     swal.fire({
                         title: title,
-                        text: response.msg,
+                        text: msg,
                         icon: type
                     }).then((result) => {
-                        if (result.value) {
-                            if (response.status) {
-                                window.location.href = base_url + 'datatahun';
-                            }
+                        if (response.status) {
+                            window.location.reload();
                         }
                     });
                 }, error: function (xhr, status, error) {
-                    console.log("error", xhr.responseText);
-                    const err = JSON.parse(xhr.responseText)
+                    console.error("XHR Error:", xhr.responseText);
                     swal.fire({
                         title: "Error",
-                        text: err.Message,
+                        text: "Terjadi kesalahan pada server",
                         icon: "error"
                     });
                 }
