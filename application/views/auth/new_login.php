@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   -->
 
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/fonts/icomoon/style.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/login-style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/app/css/login-style.css">
 
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/mystyle.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/app/css/mystyle.css">
 
     <title>Login #8</title>
 
@@ -38,9 +38,9 @@
         }
     </style>
 
-    <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>/assets/app/js/login-main.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/app/js/login-main.js"></script>
 
 </head>
 <body>
@@ -95,7 +95,7 @@
 
                 </div>
                 <!--
-            <img id="item" src="<?= base_url() ?>/assets/img/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+            <img id="item" src="<?= base_url() ?>assets/img/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
             -->
             </div>
             <div class="col-md-6 contents">
@@ -180,7 +180,7 @@
     // inisialisai fungsi gambar
     changeBg();
 </script>
-<script src="<?= base_url() ?>/assets/app/js/auth/login.js"></script>
+<script src="<?= base_url() ?>assets/app/js/auth/login.js"></script>
 
 </body>
 </html>

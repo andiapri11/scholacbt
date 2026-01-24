@@ -45,7 +45,7 @@
                     <?php foreach ($menu as $m): ?>
                         <div class="col-lg-2 col-sm-3 col-xs-4 mb-3">
                             <figure class="text-center">
-                                <img class="img-fluid" src="<?= base_url() ?>/assets/app/img/<?= $m->icon ?>" width="80"
+                                <img class="img-fluid" src="<?= base_url() ?>assets/app/img/<?= $m->icon ?>" width="80"
                                      height="80"/>
                                 <figcaption><?= $m->title ?></figcaption>
                             </figure>

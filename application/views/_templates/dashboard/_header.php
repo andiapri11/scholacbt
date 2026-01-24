@@ -23,71 +23,71 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/Ionicons/css/ionicons.min.css') ?>">
     <!-- iCheck -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/jqvmap/jqvmap.min.css">
     <!-- pace-progress -->
     <link rel="stylesheet"
-          href="<?= base_url() ?>/assets/plugins/pace-progress/themes/blue/pace-theme-minimal.css">
+          href="<?= base_url() ?>assets/plugins/pace-progress/themes/blue/pace-theme-minimal.css">
     <!-- Select2 -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- multi select -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/multiselect/css/multi-select.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/multiselect/css/multi-select.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Datetime picker -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/jquery-datetimepicker/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/jquery-datetimepicker/jquery.datetimepicker.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet"
-          href="<?= base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+          href="<?= base_url() ?>assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Toastr -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/jquery.toast.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/app/css/jquery.toast.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/toastr/toastr.min.css">
     <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/dropify/css/dropify.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/dropify/css/dropify.min.css">
 
     <!-- Datatables Buttons -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!--
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/poppins.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/calibri.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/poppins.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/calibri.css">
     -->
     <!--
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/montserrat.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/fonts.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/uthmanic.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/scheherazade.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/montserrat.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/fonts.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/uthmanic.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/scheherazade.css">
 	-->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/show.toast.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/app/css/show.toast.css">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/adminlte.min.css">
 
     <!-- textarea editor -->
     <!-- summernote -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/summernote/summernote-bs4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/summernote/plugin/audio/summernote-audio.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/katex/katex.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/summernote/plugin/audio/summernote-audio.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/katex/katex.css">
     <!-- /texarea editor; -->
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/mystyle.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/DualSelectList/css/bala.DualSelectList.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/weekCalendar.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/app/css/mystyle.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/DualSelectList/css/bala.DualSelectList.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/app/css/weekCalendar.css">
 
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/bootstrap-icon/bootstrap-icons.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/bootstrap-icon/bootstrap-icons.css">
 
-    <link href="<?= base_url() ?>/assets/plugins/ios-switch/component-custom-switch.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/plugins/ios-switch/component-custom-switch.min.css" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -96,18 +96,18 @@
     <![endif]-->
 
     <!-- jQuery -->
-    <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="<?= base_url() ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <script type="text/javascript"
-            src="<?= base_url() ?>/assets/plugins/DualSelectList/js/bala.DualSelectList.jquery.js"></script>
+            src="<?= base_url() ?>assets/plugins/DualSelectList/js/bala.DualSelectList.jquery.js"></script>
 
-    <script defer src="<?= base_url() ?>/assets/plugins/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/app/css/stylised.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/contextmenu/jquery.contextmenu.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/plugins/fields-linker/fieldsLinker.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/plugins/pignose/css/pignose.calendar.css">
+    <script defer src="<?= base_url() ?>assets/plugins/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/app/css/stylised.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/contextmenu/jquery.contextmenu.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/plugins/fields-linker/fieldsLinker.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/plugins/pignose/css/pignose.calendar.css">
 
     <style>
         page {
@@ -139,7 +139,7 @@
     let globalToken;
     let adaJadwalUjian;
 </script>
-<script src="<?= base_url() ?>/assets/app/js/generate.js"></script>
+<script src="<?= base_url() ?>assets/app/js/generate.js"></script>
 <script type="text/javascript">
     let tp_active = '<?= $tp_active->tahun ?>';
     let smt_active = '<?= $smt_active->smt ?>';
