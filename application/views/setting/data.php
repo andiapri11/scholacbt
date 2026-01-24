@@ -1,479 +1,349 @@
 <?php
-$satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK"]];
+/**
+ * ScholaCBT - Premium School Settings View
+ * Created by Antigravity
+ */
 ?>
-<div class="content-wrapper bg-light">
-    <section class="content-header ml-n3 mr-n3 header-blue">
-        <div class="container-fluid">
-            <div class="row px-3 pt-4 pb-5">
-                <div class="col-sm-6">
-                    <h1 class="text-white font-weight-bold text-shadow">
-                        <i class="fas fa-cog mr-2"></i> <?= $judul ?>
-                    </h1>
-                    <p class="text-white-50 small mb-0">Atur profil sekolah, jenjang, dan identitas aplikasi.</p>
+<style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        --glass-bg: rgba(255, 255, 255, 0.95);
+        --accent-color: #4361ee;
+    }
+
+    .settings-container {
+        padding: 1.5rem;
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-header-modern {
+        background: var(--primary-gradient);
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+        color: white;
+        margin-bottom: -3rem;
+        box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+    }
+
+    .page-header-modern h1 {
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    .page-header-modern p {
+        opacity: 0.8;
+        margin-top: 5px;
+        font-weight: 300;
+    }
+
+    .main-card-modern {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        margin-top: 1rem;
+    }
+
+    .section-title-modern {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #f1f5f9;
+    }
+
+    .section-title-modern i {
+        background: rgba(67, 97, 238, 0.1);
+        color: var(--accent-color);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+
+    .section-title-modern h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0;
+        color: #1e293b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .form-group-modern {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group-modern label {
+        font-weight: 600;
+        color: #64748b;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .input-modern {
+        background: #f8fafc !important;
+        border: 1.5px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        padding: 0.75rem 1rem !important;
+        height: auto !important;
+        transition: all 0.2s ease !important;
+        color: #1e293b !important;
+        font-weight: 500 !important;
+    }
+
+    .input-modern:focus {
+        background: #ffffff !important;
+        border-color: #4361ee !important;
+        box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1) !important;
+    }
+
+    .logo-upload-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 2rem;
+    }
+
+    .logo-card {
+        flex: 1;
+        background: #f8fafc;
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        border: 1.5px dashed #cbd5e1;
+        transition: all 0.3s ease;
+    }
+
+    .logo-card:hover {
+        border-color: #4361ee;
+        background: #f1f5f9;
+    }
+
+    .btn-save-modern {
+        background: var(--primary-gradient);
+        border: none;
+        border-radius: 50px;
+        padding: 12px 40px;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-save-modern:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px rgba(67, 97, 238, 0.3);
+        color: white;
+    }
+
+    .dropify-wrapper {
+        border-radius: 12px !important;
+        border: 1.5px dashed #cbd5e1 !important;
+    }
+</style>
+
+<div class="settings-container">
+    <div class="page-header-modern">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1>Profile Sekolah</h1>
+                <p>Konfigurasi identitas institusi dan pengaturan sistem aplikasi.</p>
+            </div>
+            <button type="submit" form="form-setting" class="btn btn-save-modern">
+                <i class="fas fa-save"></i> Simpan Perubahan
+            </button>
+        </div>
+    </div>
+
+    <div class="main-card-modern">
+        <?= form_open('settings/saveSetting', array('id' => 'form-setting')); ?>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="section-title-modern">
+                    <i class="fas fa-school"></i>
+                    <h3>Identitas Sekolah</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label>Nama Aplikasi <span class="text-danger">*</span></label>
+                            <input type="text" name="nama_aplikasi" class="form-control input-modern" value="<?= $setting->nama_aplikasi ?>" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label>Nama Sekolah / Madrasah <span class="text-danger">*</span></label>
+                            <input type="text" name="nama_sekolah" class="form-control input-modern" value="<?= $setting->sekolah ?>" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group-modern">
+                            <label>NSS / NSM</label>
+                            <input type="text" name="nss" class="form-control input-modern" value="<?= $setting->nss ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group-modern">
+                            <label>NPSN</label>
+                            <input type="text" name="npsn" class="form-control input-modern" value="<?= $setting->npsn ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group-modern">
+                            <label>Jenjang Pendidikan</label>
+                            <select name="jenjang" class="form-control input-modern select2">
+                                <option value="1" <?= $setting->jenjang == 1 ? 'selected' : '' ?>>SD / MI</option>
+                                <option value="2" <?= $setting->jenjang == 2 ? 'selected' : '' ?>>SMP / MTs</option>
+                                <option value="3" <?= $setting->jenjang == 3 ? 'selected' : '' ?>>SMA / MA / SMK</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title-modern mt-4">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Lokasi & Kontak</h3>
+                </div>
+
+                <div class="form-group-modern">
+                    <label>Alamat Sekolah</label>
+                    <textarea name="alamat" class="form-control input-modern" rows="2"><?= $setting->alamat ?></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label>Email Sekolah</label>
+                            <input type="email" name="email" class="form-control input-modern" value="<?= $setting->email ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label>Telepon / Fax</label>
+                            <input type="text" name="tlp" class="form-control input-modern" value="<?= $setting->telp ?>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title-modern mt-4">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Kepala Sekolah</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label>Nama Kepala Sekolah</label>
+                            <input type="text" name="kepsek" class="form-control input-modern" value="<?= $setting->kepsek ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group-modern">
+                            <label>NIP Kepala Sekolah</label>
+                            <input type="text" name="nip" class="form-control input-modern" value="<?= $setting->nip ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="section-title-modern">
+                    <i class="fas fa-image"></i>
+                    <h3>Logo & Branding</h3>
+                </div>
+
+                <div class="form-group-modern">
+                    <label>Logo Aplikasi (Kiri)</label>
+                    <input type="file" name="logo_kiri" class="dropify" data-default-file="<?= base_url($setting->logo_kiri) ?>" />
+                    <input type="hidden" name="old_logo_kiri" value="<?= $setting->logo_kiri ?>">
+                </div>
+
+                <div class="form-group-modern mt-4">
+                    <label>Logo Cetak (Kanan)</label>
+                    <input type="file" name="logo_kanan" class="dropify" data-default-file="<?= base_url($setting->logo_kanan) ?>" />
+                    <input type="hidden" name="old_logo_kanan" value="<?= $setting->logo_kanan ?>">
+                </div>
+
+                <div class="info-box bg-light border shadow-none mt-4" style="border-radius: 12px;">
+                    <span class="info-box-icon"><i class="fas fa-info-circle text-primary"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text font-weight-bold">Informasi Aset</span>
+                        <span class="info-box-number small text-muted">Format: PNG/JPG/GIF. Ukuran ideal 200x200px.</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="content mt-n5 px-3">
-        <div class="container-fluid">
-            <div class="card card-modern border-0 shadow-lg mb-4">
-                <div class="card-header bg-white py-3">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-sliders-h text-primary mr-2"></i>
-                        <h6 class="mb-0 font-weight-bold text-dark">Konfigurasi Identitas</h6>
-                    </div>
-                    <div class="card-tools">
-                        <button class="btn btn-primary rounded-pill px-4 shadow-sm" onclick="submitSetting()">
-                            <i class="fas fa-save mr-1"></i> Simpan Perubahan
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body p-4">
-                    <?= form_open('', array('id' => 'savesetting')) ?>
-                    
-                    <!-- Section 1: Identitas Utama -->
-                    <div class="row mb-4">
-                        <div class="col-12 mb-3">
-                            <h6 class="font-weight-bold text-primary"><i class="fas fa-university mr-2"></i> Identitas Sekolah</h6>
-                            <hr class="mt-1">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-desktop mr-1 text-xs"></i> Nama Aplikasi *</label>
-                            <input type="text" name="nama_aplikasi" class="form-control required shadow-sm"
-                                   placeholder="Contoh: CBT Nurul Ilmi" value="<?= $setting->nama_aplikasi ?>">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-school mr-1 text-xs"></i> Nama Sekolah *</label>
-                            <input type="text" name="nama_sekolah" class="form-control required shadow-sm"
-                                   placeholder="Contoh: SMA Nurul Ilmi" value="<?= $setting->sekolah ?>" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-id-card mr-1 text-xs"></i> NSS / NSM</label>
-                            <input type="number" name="nss" class="form-control shadow-sm" placeholder="Masukkan NSS/NSM" value="<?= $setting->nss ?>">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-fingerprint mr-1 text-xs"></i> NPSN</label>
-                            <input type="number" name="npsn" class="form-control shadow-sm" placeholder="Masukkan NPSN" value="<?= $setting->npsn ?>">
-                        </div>
-                    </div>
-
-                    <!-- Section 2: Jenjang & Satuan -->
-                    <div class="row mb-4 bg-light p-3 rounded" style="border: 1px dashed #dee2e6;">
-                        <div class="col-md-6 mb-3 mb-md-0">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-layer-group mr-1 text-xs"></i> Jenjang Pendidikan *</label>
-                            <select id="jenjang" class="form-control required select2" data-placeholder="Pilih Jenjang"
-                                    name="jenjang" required>
-                                <option value="" disabled>Pilih Jenjang</option>
-                                <?php
-                                $jenjang = ["SD/MI", "SMP/MTS", "SMA/MA/SMK"];
-                                for ($i = 0; $i < 3; $i++) {
-                                    $arrJenjang[$i + 1] = $jenjang[$i];
-                                }
-                                foreach ($arrJenjang as $key => $val) :
-                                    $selected = $setting->jenjang == $key ? 'selected' : '';
-                                    ?>
-                                    <option value="<?= $key ?>" <?= $selected ?>><?= $val ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-bookmark mr-1 text-xs"></i> Satuan Pendidikan *</label>
-                            <select id="satuan-pend" class="form-control required select2" data-placeholder="Satuan Pendidikan"
-                                    name="satuan_pendidikan" required>
-                                <option value="0" disabled>Satuan Pendidikan</option>
-                                <?php
-                                $satuan_selected = $satuan[$setting->jenjang];
-                                for ($i = 0; $i < count($satuan_selected); $i++) {
-                                    $arrSatuan[$i + 1] = $satuan_selected[$i];
-                                }
-                                foreach ($arrSatuan as $keys => $vals) :
-                                    $selecteds = $setting->satuan_pendidikan == $keys ? 'selected' : '';
-                                    ?>
-                                    <option value="<?= $keys ?>" <?= $selecteds ?>><?= $vals ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Section 3: Lokasi & Alamat -->
-                    <div class="row mb-4">
-                        <div class="col-12 mb-3">
-                            <h6 class="font-weight-bold text-primary"><i class="fas fa-map-marked-alt mr-2"></i> Alamat Lengkap</h6>
-                            <hr class="mt-1">
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-map-pin mr-1 text-xs"></i> Alamat Jalan *</label>
-                            <textarea class="form-control required shadow-sm" name="alamat" rows="5"
-                                      placeholder="Nama Jalan, Nomor, RT/RW" required style="border-radius: 8px;"><?= $setting->alamat ?></textarea>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2">Desa / Kelurahan *</label>
-                                    <input type="text" name="desa" class="form-control required shadow-sm"
-                                           placeholder="Contoh: Desa Makmur" value="<?= $setting->desa ?>" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2">Kecamatan *</label>
-                                    <input type="text" name="kec" class="form-control required shadow-sm"
-                                           placeholder="Contoh: Kec. Sejahtera" value="<?= $setting->kecamatan ?>" required>
-                                </div>
-                                <div class="col-md-5 mb-3">
-                                    <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2">Kabupaten / Kota *</label>
-                                    <input type="text" name="kota" class="form-control required shadow-sm" 
-                                           placeholder="Contoh: Kota Bersemi" value="<?= $setting->kota ?>" required>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2">Kode Pos</label>
-                                    <input type="number" name="kode_pos" class="form-control shadow-sm" 
-                                           placeholder="12345" value="<?= $setting->kode_pos ?>">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2">Provinsi *</label>
-                                    <input type="text" name="provinsi" class="form-control required shadow-sm"
-                                           placeholder="Masukkan Provinsi" value="<?= $setting->provinsi ?>" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Section 4: Kontak & Media -->
-                    <div class="row mb-4">
-                        <div class="col-12 mb-3">
-                            <h6 class="font-weight-bold text-primary"><i class="fas fa-headset mr-2"></i> Kontak Sekolah</h6>
-                            <hr class="mt-1">
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-phone mr-1 text-xs"></i> Telepon</label>
-                            <div class="input-group shadow-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light border-right-0"><i class="fas fa-phone-alt text-xs"></i></span>
-                                </div>
-                                <input type="number" name="tlp" class="form-control border-left-0" placeholder="81234..." value="<?= $setting->telp ?>">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-envelope mr-1 text-xs"></i> Email</label>
-                            <div class="input-group shadow-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light border-right-0"><i class="fas fa-at text-xs"></i></span>
-                                </div>
-                                <input type="email" name="email" class="form-control border-left-0" placeholder="admin@sekolah.sch.id" value="<?= $setting->email ?>">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-globe mr-1 text-xs"></i> Website</label>
-                            <div class="input-group shadow-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light border-right-0"><i class="fas fa-link text-xs"></i></span>
-                                </div>
-                                <input type="text" name="web" class="form-control border-left-0" placeholder="www.sekolah.sch.id" value="<?= $setting->web ?>">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2"><i class="fas fa-fax mr-1 text-xs"></i> Fax</label>
-                            <div class="input-group shadow-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light border-right-0"><i class="fas fa-print text-xs"></i></span>
-                                </div>
-                                <input type="text" name="fax" class="form-control border-left-0" placeholder="Nomor Fax" value="<?= $setting->fax ?>">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Section 5: Kepemimpinan -->
-                    <div class="row mb-4">
-                        <div class="col-12 mb-3">
-                            <h6 class="font-weight-bold text-primary"><i class="fas fa-user-tie mr-2"></i> Pimpinan Sekolah</h6>
-                            <hr class="mt-1">
-                        </div>
-                        <div class="col-md-7 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2">Nama Kepala Sekolah *</label>
-                            <input type="text" name="kepsek" class="form-control required shadow-sm"
-                                   placeholder="Gellar lengkap dengan NIP jika ada" value="<?= $setting->kepsek ?>" required>
-                        </div>
-                        <div class="col-md-5 mb-3">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2">NIP / NUPTK</label>
-                            <input type="number" name="nip" class="form-control shadow-sm" 
-                                   placeholder="Masukkan NIP" value="<?= $setting->nip ?>">
-                        </div>
-                    </div>
-                    <?= form_close() ?>
-                    <div class="row pt-4 border-top">
-                        <div class="col-12 mb-3">
-                            <h6 class="font-weight-bold text-dark"><i class="fas fa-image text-primary mr-2"></i> Logo & Stempel</h6>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2 text-center d-block">Tandatangan Kepala Sekolah</label>
-                            <?= form_open_multipart('', array('id' => 'set-tandatangan')) ?>
-                            <div class="form-group mb-4">
-                                <input type="file" id="tanda-tangan" name="logo" class="dropify"
-                                       data-max-file-size-preview="2M" data-allowed-file-extensions="jpg jpeg png"
-                                       data-default-file="<?= base_url() . $setting->tanda_tangan ?>"/>
-                            </div>
-                            <?= form_close() ?>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2 text-center d-block">Logo Kiri / Aplikasi</label>
-                            <?= form_open_multipart('', array('id' => 'set-logo-kiri')) ?>
-                            <div class="form-group mb-4">
-                                <input type="file" id="logo-kiri" name="logo" class="dropify"
-                                       data-max-file-size-preview="2M"
-                                       data-allowed-file-extensions="jpg jpeg png"
-                                       data-default-file="<?= base_url() . $setting->logo_kiri ?>"/>
-                            </div>
-                            <?= form_close() ?>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="small font-weight-bold text-muted uppercase tracking-wider mb-2 text-center d-block">Logo Kanan Sekolah</label>
-                            <?= form_open_multipart('', array('id' => 'set-logo-kanan')) ?>
-                            <div class="form-group mb-4">
-                                <input type="file" id="logo-kanan" name="logo" class="dropify"
-                                       data-max-file-size-preview="2M"
-                                       data-allowed-file-extensions="jpg jpeg png"
-                                       data-default-file="<?= base_url() . $setting->logo_kanan ?>"/>
-                            </div>
-                            <?= form_close() ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <?= form_close(); ?>
+    </div>
 </div>
 
 <script>
-    var logoKanan = '<?=base_url() . $setting->logo_kanan?>';
-    var logoKiri = '<?=base_url() . $setting->logo_kiri?>';
-    var tandatangan = '<?=base_url() . $setting->tanda_tangan?>';
-    var satuanPend = JSON.parse(JSON.stringify(<?= json_encode($satuan)?>));
-
-    function submitSetting() {
-        $('#savesetting').submit();
-    }
-
-    $(document).ready(function () {
-        ajaxcsrf();
-
-        var drEvent = $('.dropify').dropify({
+    $(document).ready(function() {
+        $('.dropify').dropify({
             messages: {
-                'default': 'Seret logo kesini atau klik',
-                'replace': 'Seret atau klik<br>untuk mengganti logo',
-                'remove': 'Hapus',
-                'error': 'Ooops, ada kesalahan!!.'
-            },
-            error: {
-                'fileSize': 'The file size is too big ({{ value }} max).',
-                'minWidth': 'The image width is too small ({{ value }}}px min).',
-                'maxWidth': 'The image width is too big ({{ value }}}px max).',
-                'minHeight': 'The image height is too small ({{ value }}}px min).',
-                'maxHeight': 'The image height is too big ({{ value }}px max).',
-                'imageFormat': 'The image format is not allowed ({{ value }} only).'
+                'default': 'Seret logo ke sini atau klik',
+                'replace': 'Seret untuk ganti',
+                'remove':  'Hapus',
+                'error':   'Ops, terjadi kesalahan.'
             }
         });
 
-
-        drEvent.on('dropify.beforeClear', function (event, element) {
-            //return confirm("Hapus logo \"" + element.file.name + "\" ?");
-        });
-
-        drEvent.on('dropify.afterClear', function (event, element) {
-            deleteImage($(event.currentTarget).data('default-file'));
-            if (element.element.id === 'logo-kanan') {
-                logoKanan = '';
-                $('#prev-logo-kanan').attr('src', '');
-            } else if (element.element.id === 'logo-kiri') {
-                logoKiri = '';
-                $('#prev-logo-kiri').attr('src', '');
-            } else if (element.element.id === 'tanda-tangan') {
-                tandatangan = '';
-                $('#prev-tandatangan').css(
-                    {'background': 'url() no-repeat center'},
-                    {'font-family': 'Times New Roman'},
-                    {'font-size': '10pt'},
-                    {'background-size': '100px 60px'}
-                );
-            }
-        });
-
-        drEvent.on('dropify.errors', function (event, element) {
-            console.log('Has Errors');
-            $.toast({
-                heading: "Error",
-                text: "file rusak",
-                icon: 'warning',
-                showHideTransition: 'fade',
-                allowToastClose: true,
-                hideAfter: 5000,
-                position: 'top-right'
-            });
-        });
-
-        $('#jenjang').change(function () {
-            var htmlOptions = '<option value="0" disabled="">Satuan Pendidikan</option>\n';
-            var satSelected = satuanPend[$(this).val()];
-            for (let i = 0; i < satSelected.length; i++) {
-                htmlOptions += '<option value="' + (i + 1) + '">' + satSelected[i] + '</option>';
-            }
-            $('#satuan-pend').html(htmlOptions);
-        });
-
-        $('#savesetting').on('submit', function (e) {
+        $('#form-setting').on('submit', function(e) {
             e.preventDefault();
-            e.stopImmediatePropagation();
-
-            var hasInput = true;
-            $('.required').each(function () {
-                if ($(this).val() === "") {
-                    hasInput = false;
-                    return false;
-                }
-            });
-
-            console.log(hasInput);
-
-            if (!hasInput) {
-                Swal.fire({
-                    title: "ERROR",
-                    text: "Isi semua pilihan yang bertanda bintang (*)",
-                    icon: "error"
-                });
-            } else {
-                swal.fire({
-                    text: "Silahkan tunggu....",
-                    button: false,
-                    closeOnClickOutside: false,
-                    closeOnEsc: false,
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                    onOpen: () => {
-                        swal.showLoading();
-                    }
-                });
-                $.ajax({
-                    url: base_url + 'settings/savesetting',
-                    type: 'POST',
-                    data: $(this).serialize() + '&logo_kanan=' + logoKanan + '&logo_kiri=' + logoKiri + '&tanda_tangan=' + tandatangan,
-                    success: function (response) {
-                        console.log(response);
-                        swal.fire({
-                            title: "Sukses",
-                            html: "Berhasil menyimpan pengaturan",
-                            icon: "success",
-                            showCancelButton: false,
-                            confirmButtonColor: "#3085d6",
-                        }).then(result => {
-                            if (result.value) {
-                                window.location.href = base_url + 'settings';
-                            }
-                        });
-                    },
-                    error: function (xhr, error, status) {
-                        console.log(xhr.responseText);
-                        const err = JSON.parse(xhr.responseText)
-                        swal.fire({
-                            title: "Error",
-                            text: err.Message,
-                            icon: "error"
-                        });
-                    }
-                });
-            }
-        });
-
-        $("#logo-kanan").change(function () {
-            var input = $(this)[0];
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#prev-logo-kanan').attr('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-
-                var form = new FormData($('#set-logo-kanan')[0]);
-                uploadAttach(base_url + 'settings/uploadfile/logo_kanan', form);
-            }
-        });
-
-        $("#logo-kiri").change(function () {
-            var input = $(this)[0];
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#prev-logo-kiri').attr('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-
-                var form = new FormData($('#set-logo-kiri')[0]);
-                uploadAttach(base_url + 'settings/uploadfile/logo_kiri', form);
-            }
-        });
-
-        $("#tanda-tangan").change(function () {
-            var input = $(this)[0];
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    //style="font-family: 'Times New Roman'; font-size: 10pt; background: url('<?=base_url('assets/img/user.jpg')?>') no-repeat center; background-size: 100px 60px
-                    $('#prev-tandatangan').css({'background': 'url(' + e.target.result + ') no-repeat center'}, {'font-family': 'Times New Roman'}, {'font-size': '10pt'}, {'background-size': '100px 60px'});
-                    //$('#prev-tandatangan').attr('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-
-                var form = new FormData($('#set-tandatangan')[0]);
-                uploadAttach(base_url + 'settings/uploadfile/tandatangan', form);
-            }
-        });
-
-        function uploadAttach(action, data) {
+            const btn = $('.btn-save-modern');
+            const originalText = btn.html();
+            
+            btn.attr('disabled', 'disabled').html('<i class="fas fa-circle-notch fa-spin"></i> Menyimpan...');
+            
             $.ajax({
-                type: "POST",
-                enctype: 'multipart/form-data',
-                url: action,
-                data: data,
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: new FormData(this),
                 processData: false,
                 contentType: false,
-                cache: false,
-                timeout: 600000,
-                success: function (data) {
-                    if (data.src.includes('kanan')) {
-                        logoKanan = data.src;
-                        //console.log('kanan', data.src);
-                    } else if (data.src.includes('kiri')) {
-                        logoKiri = data.src;
-                        //console.log('kiri', data.src);
-                    } else if (data.src.includes('tanda')) {
-                        tandatangan = data.src;
-                        //console.log('tandatangan', data.src);
-                    }
-                },
-                error: function (e) {
-                    console.log("error", e.responseText);
-                    $.toast({
-                        heading: "ERROR!!",
-                        text: "file tidak terbaca",
-                        icon: 'error',
-                        showHideTransition: 'fade',
-                        allowToastClose: true,
-                        hideAfter: 5000,
-                        position: 'top-right'
+                success: function(data) {
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        text: 'Pengaturan sekolah telah diperbarui.',
+                        icon: 'success',
+                        confirmButtonColor: '#4361ee',
+                        borderRadius: '20px'
                     });
+                    btn.removeAttr('disabled').html(originalText);
+                },
+                error: function() {
+                    Swal.fire({
+                        title: 'Gagal!',
+                        text: 'Terjadi kesalahan sistem.',
+                        icon: 'error'
+                    });
+                    btn.removeAttr('disabled').html(originalText);
                 }
             });
-        }
-
-        function deleteImage(src) {
-            console.log(src);
-            $.ajax({
-                data: {src: src},
-                type: "POST",
-                url: base_url + "settings/deletefile",
-                cache: false,
-                success: function (response) {
-                    console.log(response);
-                }
-            });
-        }
+        });
     });
 </script>
