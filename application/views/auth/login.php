@@ -1,224 +1,269 @@
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
     body {
         font-family: 'Poppins', sans-serif !important;
-        overflow: hidden;
-        background: linear-gradient(135deg, #1a1c2c 0%, #4a192c 100%);
+        background: #0f172a;
+        background: radial-gradient(circle at top right, #1e293b, #0f172a);
         margin: 0;
         padding: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
     }
 
-    .login-wrapper {
+    .login-container {
         min-height: 100vh;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 20px;
         position: relative;
-        z-index: 1;
     }
 
-    .glass-card {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 24px;
-        box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.4);
+    /* Abstract background elements */
+    .orb {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        filter: blur(100px);
+        z-index: -1;
+        opacity: 0.15;
+    }
+    .orb-1 { top: 10%; left: 10%; background: #3b82f6; }
+    .orb-2 { bottom: 10%; right: 10%; background: #8b5cf6; }
+
+    .login-box-modern {
         width: 100%;
-        max-width: 400px;
-        padding: 50px 40px;
-        color: white;
+        max-width: 420px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
     }
 
-    .login-logo-modern {
+    .login-header {
         text-align: center;
         margin-bottom: 35px;
     }
 
-    .login-logo-modern img {
-        width: 85px;
+    .login-header img {
+        width: 70px;
         height: auto;
         margin-bottom: 20px;
-        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+        filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3));
     }
 
-    .login-logo-modern h4 {
+    .login-header h4 {
+        color: white;
         font-weight: 700;
-        letter-spacing: 0.8px;
-        margin-bottom: 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
     }
 
-    .form-group-modern {
-        margin-bottom: 25px;
+    .login-header p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.85rem;
+        margin-bottom: 0;
+    }
+
+    .form-group-custom {
+        margin-bottom: 20px;
         position: relative;
     }
 
-    .form-group-modern .input-group-text {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-right: none;
-        color: rgba(255, 255, 255, 0.8);
-        border-top-left-radius: 12px;
-        border-bottom-left-radius: 12px;
-        width: 45px;
-        justify-content: center;
+    .form-group-custom label {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
-    .form-group-modern .form-control {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: white;
-        height: 52px;
-        border-top-right-radius: 12px;
-        border-bottom-right-radius: 12px;
-        transition: all 0.3s ease;
+    .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .input-wrapper i.prefix-icon {
+        position: absolute;
+        left: 16px;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+    }
+
+    .form-control-custom {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        padding: 14px 16px 14px 48px !important;
+        color: white !important;
         font-size: 0.95rem;
+        transition: all 0.3s ease;
+        outline: none;
     }
 
-    .form-group-modern .form-control:focus {
-        background: rgba(255, 255, 255, 0.12);
-        box-shadow: none;
-        border-color: rgba(255, 255, 255, 0.4);
+    .form-control-custom:focus {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
     }
 
-    .form-group-modern .form-control::placeholder {
-        color: rgba(255, 255, 255, 0.4);
+    .form-control-custom:focus + i.prefix-icon {
+        color: #3b82f6;
     }
 
-    .btn-login-modern {
-        background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+    .toggle-pass {
+        position: absolute;
+        right: 16px;
+        color: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        padding: 5px;
+        transition: color 0.3s ease;
+    }
+
+    .toggle-pass:hover {
+        color: white;
+    }
+
+    .btn-submit-custom {
+        width: 100%;
+        padding: 14px;
+        background: #3b82f6;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         border: none;
         border-radius: 12px;
-        height: 52px;
-        font-weight: 600;
-        letter-spacing: 1px;
         color: white;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
         transition: all 0.3s ease;
         margin-top: 10px;
-        text-transform: uppercase;
-        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
 
-    .btn-login-modern:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(110, 142, 251, 0.4);
-        color: white;
+    .btn-submit-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
         filter: brightness(1.1);
     }
 
-    .toggle-password-icon {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        z-index: 10;
-        opacity: 0.5;
-        transition: opacity 0.3s;
+    .btn-submit-custom:active {
+        transform: translateY(0);
     }
 
-    .toggle-password-icon:hover {
-        opacity: 0.9;
+    .login-footer {
+        margin-top: 30px;
+        text-align: center;
     }
 
-    .checkbox-modern {
-        display: flex;
-        align-items: center;
-        margin-bottom: 25px;
-        font-size: 0.85rem;
+    .powered-by {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        line-height: 1.6;
+    }
+
+    .powered-by strong {
         color: rgba(255, 255, 255, 0.7);
-    }
-
-    .checkbox-modern input {
-        margin-right: 10px;
-        width: 16px;
-        height: 16px;
-        accent-color: #a777e3;
-        cursor: pointer;
-    }
-    
-    .checkbox-modern label {
-        cursor: pointer;
-        margin-bottom: 0;
+        font-weight: 600;
     }
 
     #infoMessage .info-box {
+        padding: 12px 16px;
         border-radius: 12px;
-        margin-bottom: 25px;
-        min-height: 45px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: white;
         font-size: 0.85rem;
+        margin-bottom: 25px;
+        text-align: center;
+        animation: fadeIn 0.3s ease;
     }
 
-    /* Fixed Background Accents */
-    .bg-accent {
-        position: fixed;
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        filter: blur(80px);
-        z-index: 0;
-        opacity: 0.4;
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
-    .accent-1 { top: -100px; right: -100px; background: #6e8efb; }
-    .accent-2 { bottom: -150px; left: -150px; background: #a777e3; }
 
+    /* Mobile Friendly Adjustments */
     @media (max-width: 480px) {
-        .glass-card {
-            padding: 40px 30px;
+        .login-box-modern {
+            padding: 30px 24px;
+            max-width: 100%;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+        .orb {
+            display: none;
+        }
+        body {
+            background: #0f172a;
         }
     }
 </style>
 
-<div class="bg-accent accent-1"></div>
-<div class="bg-accent accent-2"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-<div class="login-wrapper">
-    <div class="glass-card">
-        <div class="login-logo-modern">
+<div class="login-container">
+    <div class="login-box-modern">
+        <div class="login-header">
             <?php
             $logo_app = $setting->logo_kanan == null ? base_url('assets/img/favicon.png') : base_url($setting->logo_kanan);
             ?>
             <img src="<?= $logo_app ?>" alt="Logo">
             <h4><?= $setting->nama_aplikasi ?></h4>
+            <p>Silakan masuk menggunakan akun Anda</p>
         </div>
 
         <div id="infoMessage"><?php echo $message; ?></div>
 
         <?= form_open("auth/cek_login", array('id' => 'login')); ?>
-            <div class="form-group-modern">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-user"></i>
-                        </div>
-                    </div>
-                    <input type="text" name="identity" id="identity" class="form-control" placeholder="Username / Email" required>
+            <div class="form-group-custom">
+                <label>Username / Email</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user prefix-icon"></i>
+                    <input type="text" name="identity" id="identity" class="form-control-custom" placeholder="Ketik username Anda" required autocomplete="username">
                 </div>
             </div>
 
-            <div class="form-group-modern">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                    </div>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required style="border-right: 1px solid rgba(255, 255, 255, 0.15); border-top-right-radius: 12px; border-bottom-right-radius: 12px;">
-                    <i id="toggle-password" class="fas fa-eye-slash toggle-password-icon"></i>
+            <div class="form-group-custom">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock prefix-icon"></i>
+                    <input type="password" name="password" id="password" class="form-control-custom" placeholder="Ketik password Anda" required autocomplete="current-password">
+                    <i id="toggle-password" class="fas fa-eye-slash toggle-pass"></i>
                 </div>
             </div>
 
             <input type="hidden" id="cbt-only" name="cbt-only" value="1">
 
-            <button type="submit" id="submit" class="btn btn-login-modern btn-block">
-                MASUK SEKARANG <i class="fas fa-arrow-right ml-2"></i>
+            <button type="submit" id="submit" class="btn-submit-custom">
+                <span>Masuk Sekarang</span>
+                <i class="fas fa-arrow-right"></i>
             </button>
         <?= form_close(); ?>
+    </div>
+
+    <div class="login-footer">
+        <div class="powered-by">
+            Powered by <strong>Schola CBT</strong><br>
+            untuk Pendidikan Indonesia
+        </div>
     </div>
 </div>
 
@@ -231,17 +276,11 @@
             e.stopImmediatePropagation();
 
             var infobox = $('#infoMessage');
-            infobox.html('<div class="info-box align-items-center justify-content-center" style="background: rgba(23, 162, 184, 0.2); border: 1px solid rgba(23, 162, 184, 0.3); color: white;">Memverifikasi...</div>');
+            infobox.html('<div class="info-box" style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #93c5fd;">Memverifikasi Akun...</div>');
 
             var btnsubmit = $('#submit');
             var originalBtnText = btnsubmit.html();
             btnsubmit.attr('disabled', 'disabled').html('<i class="fas fa-circle-notch fa-spin mr-2"></i> Mohon Tunggu...');
-
-            const arrForm = $(this).serializeArray()
-            const cbtOnly = arrForm.find(function (obj) {
-                return obj.name === 'cbt-only'
-            })
-            localStorage.setItem('scholaCBT.login', cbtOnly !== undefined ? '1' : '0')
 
             $.ajax({
                 url: $(this).attr('action'),
@@ -249,27 +288,26 @@
                 data: $(this).serialize(),
                 success: function(data){
                     if(data.status){
-                        infobox.html('<div class="info-box align-items-center justify-content-center" style="background: rgba(40, 167, 69, 0.2); border: 1px solid rgba(40, 167, 69, 0.3); color: white;">Akses Diterima!</div>');
+                        infobox.html('<div class="info-box" style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); color: #86efac;">Login Berhasil! Mengalihkan...</div>');
                         
-                        const isLogin = localStorage.getItem('scholaCBT.login')
-                        const isCbtMode = isLogin ? isLogin === '1' : false
+                        localStorage.setItem('scholaCBT.login', '1')
                         let go = base_url + data.url;
-                        if (isCbtMode && data.role === 'siswa') {
+                        if (data.role === 'siswa') {
                             go = base_url + 'siswa/cbt';
                         }
                         
                         setTimeout(function() {
                             window.location.href = go;
-                        }, 400);
+                        }, 600);
                     } else {
                         btnsubmit.removeAttr('disabled').html(originalBtnText);
                         if(data.failed){
-                            infobox.html('<div class="info-box align-items-center justify-content-center" style="background: rgba(220, 53, 69, 0.2); border: 1px solid rgba(220, 53, 69, 0.3); color: white;">' + data.failed + '</div>');
+                            infobox.html('<div class="info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5;">' + data.failed + '</div>');
                         }
                         if(data.invalid){
                             $.each(data.invalid, function(key, val){
                                 if(val != ''){
-                                    $('[name="'+key+'"]').addClass('is-invalid');
+                                    $('[name="'+key+'"]').css('border-color', '#ef4444');
                                 }
                             });
                         }
@@ -277,12 +315,12 @@
                 },
                 error: function() {
                     btnsubmit.removeAttr('disabled').html(originalBtnText);
-                    infobox.html('<div class="info-box align-items-center justify-content-center" style="background: rgba(220, 53, 69, 0.2); border: 1px solid rgba(220, 53, 69, 0.3); color: white;">Terjadi kesalahan koneksi.</div>');
+                    infobox.html('<div class="info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5;">Kesalahan Server. Coba lagi.</div>');
                 }
             });
         });
 
-        $('#toggle-password').on('click', function (e) {
+        $('#toggle-password').on('click', function () {
             const passInput = $('#password');
             const type = passInput.attr('type') === 'password' ? 'text' : 'password';
             passInput.attr('type', type);
@@ -290,7 +328,7 @@
         });
 
         $('input').on('keydown', function() {
-            $(this).removeClass('is-invalid');
+            $(this).css('border-color', 'rgba(255, 255, 255, 0.1)');
         });
     });
 </script>
