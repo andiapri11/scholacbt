@@ -10,15 +10,17 @@ date_default_timezone_set('Asia/Jakarta');
 // $config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
 
 // Dynamic Base URL Detection (Handles Proxies/HTTPS)
-$is_https = false;
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
-    $is_https = true;
+    $scheme = 'https';
 } elseif (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) === 'on' || $_SERVER['HTTPS'] == 1)) {
-    $is_https = true;
+    $scheme = 'https';
+} elseif ($_SERVER['SERVER_PORT'] == 443) {
+    $scheme = 'https';
+} else {
+    $scheme = 'http';
 }
 
-$scheme = $is_https ? 'https' : 'http';
-$base_url = "$scheme://" . $_SERVER['HTTP_HOST'];
+$base_url = $scheme . "://" . $_SERVER['HTTP_HOST'];
 $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 $config['base_url'] = rtrim($base_url, '/') . '/';
 
