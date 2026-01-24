@@ -261,8 +261,7 @@
 
     <div class="login-footer">
         <div class="powered-by">
-            Powered by <strong>Schola CBT</strong><br>
-            untuk Pendidikan Indonesia
+            Powered by <strong>Schola CBT</strong> untuk Pendidikan Indonesia
         </div>
     </div>
 </div>
