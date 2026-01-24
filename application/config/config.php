@@ -9,15 +9,11 @@ date_default_timezone_set('Asia/Jakarta');
 // $config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
 // $config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
 
-// Dynamic Base URL Detection (Handles Proxies/HTTPS)
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
-    $_SERVER['HTTPS'] = 'on';
-}
-
-$scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
-$base_url = $scheme . "://" . $_SERVER['HTTP_HOST'];
-$base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-$config['base_url'] = rtrim($base_url, '/') . '/';
+// Dynamic Base URL Detection
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'];
+$script_name = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+$config['base_url'] = rtrim($protocol . "://" . $host . $script_name, '/') . '/';
 
 $config['index_page'] = '';
 

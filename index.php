@@ -1,4 +1,11 @@
 <?php
+// Fix for HTTPS behind Proxy (Dokploy/Traefik)
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+if (isset($_SERVER['HTTP_X_FORWARDED_PORT']) && $_SERVER['HTTP_X_FORWARDED_PORT'] == '443') {
+    $_SERVER['SERVER_PORT'] = 443;
+}
 /**
  * CodeIgniter
  *
