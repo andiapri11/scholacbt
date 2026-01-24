@@ -181,7 +181,7 @@
     <div class="glass-card">
         <div class="login-logo-modern">
             <?php
-            $logo_app = $setting->logo_kanan == null ? base_url() . 'assets/img/favicon.png' : base_url() . $setting->logo_kanan;
+            $logo_app = $setting->logo_kanan == null ? base_url('assets/img/favicon.png') : base_url($setting->logo_kanan);
             ?>
             <img src="<?= $logo_app ?>" alt="Logo">
             <h4><?= $setting->nama_aplikasi ?></h4>

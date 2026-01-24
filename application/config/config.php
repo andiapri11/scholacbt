@@ -11,15 +11,10 @@ date_default_timezone_set('Asia/Jakarta');
 
 // Dynamic Base URL Detection (Handles Proxies/HTTPS)
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
-    $scheme = 'https';
-} elseif (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) === 'on' || $_SERVER['HTTPS'] == 1)) {
-    $scheme = 'https';
-} elseif ($_SERVER['SERVER_PORT'] == 443) {
-    $scheme = 'https';
-} else {
-    $scheme = 'http';
+    $_SERVER['HTTPS'] = 'on';
 }
 
+$scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
 $base_url = $scheme . "://" . $_SERVER['HTTP_HOST'];
 $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 $config['base_url'] = rtrim($base_url, '/') . '/';
