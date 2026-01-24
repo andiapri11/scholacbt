@@ -9,8 +9,22 @@ date_default_timezone_set('Asia/Jakarta');
 // $config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
 // $config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
 
-$scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http';
-$config['base_url'] = "$scheme://".$_SERVER['HTTP_HOST'];
+// Dynamic Base URL Detection (Handles Proxies/HTTPS)
+$is_https = false;
+if (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) === 'on') {
+    $is_https = true;
+} elseif (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+    // Handle comma-separated values (e.g. 'https, http')
+    $protos = explode(',', $_SERVER['HTTP_X_FORWARDED_PROTO']);
+    if (strtolower(trim($protos[0])) === 'https') {
+        $is_https = true;
+    }
+} elseif (isset($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off') {
+    $is_https = true;
+}
+
+$scheme = $is_https ? 'https' : 'http';
+$config['base_url'] = "$scheme://" . $_SERVER['HTTP_HOST'];
 $config['base_url'] .= rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/') . '/';
 
 $config['index_page'] = '';
