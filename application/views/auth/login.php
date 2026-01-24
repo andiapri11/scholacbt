@@ -213,10 +213,7 @@
                 </div>
             </div>
 
-            <div class="checkbox-modern">
-                <input type="checkbox" id="cbt-only" name="cbt-only" value="1" checked>
-                <label for="cbt-only">Masuk ke Mode CBT</label>
-            </div>
+            <input type="hidden" id="cbt-only" name="cbt-only" value="1">
 
             <button type="submit" id="submit" class="btn btn-login-modern btn-block">
                 MASUK SEKARANG <i class="fas fa-arrow-right ml-2"></i>
