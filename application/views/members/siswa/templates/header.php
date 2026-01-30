@@ -345,7 +345,6 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
         const isLogin = localStorage.getItem('scholaCBT.login')
         const isCbtMode = isLogin ? isLogin === '1' : false
         if (isCbtMode) {
-            $("a#url-back").attr("href", base_url + 'siswa/cbt');
             if ('<?= $cbt ?>' === 'cbt') {
                 $('#back').addClass('d-none')
             }

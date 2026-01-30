@@ -307,9 +307,6 @@
                         
                         localStorage.setItem('scholaCBT.login', '1')
                         let go = base_url + data.url;
-                        if (data.role === 'siswa') {
-                            go = base_url + 'siswa/cbt';
-                        }
                         
                         setTimeout(function() {
                             window.location.href = go;
