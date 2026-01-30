@@ -329,6 +329,8 @@
                         text: 'Pengaturan disimpan.',
                         icon: 'success',
                         confirmButtonColor: '#4361ee'
+                    }).then(() => {
+                        window.location.reload();
                     });
                     btn.removeAttr('disabled').html(originalText);
                 },
