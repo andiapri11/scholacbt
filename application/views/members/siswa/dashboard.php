@@ -209,50 +209,28 @@
             margin-top: 2px;
         }
         
-        /* Sync Dashboard Loader */
+        /* Sync Dashboard Loader - Pacman Style */
         .sync-loader-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 1.5rem;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
         }
-        .sync-loader-icon {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .sync-loader-circle {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 4px solid #f1f5f9;
-            border-top: 4px solid #4361ee;
+        .pacman-loader {
+            width: 50px;
+            aspect-ratio: 1;
             border-radius: 50%;
-            animation: sync-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            background:
+                radial-gradient(farthest-side,#000 98%,#0000) 55% 20%/8px 8px no-repeat,  
+                #ffcc00;
+            box-shadow: 2px -6px 12px 0px inset rgba(0, 0, 0, 0.7);
+            animation: l4 .5s infinite steps(5) alternate;
         }
-        .sync-loader-inner {
-            width: 30px;
-            height: 30px;
-            background: rgba(67, 97, 238, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #4361ee;
-            animation: sync-pulse 1.5s ease-in-out infinite;
-        }
-        @keyframes sync-spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes sync-pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
+        @keyframes l4{ 
+            0% {clip-path: polygon(50% 50%,100%   0,100% 0,0 0,0 100%,100% 100%,100% 100%)}
+            100% {clip-path: polygon(50% 50%,100% 65%,100% 0,0 0,0 100%,100% 100%,100%  35%)}
         }
         .sync-text {
             font-size: 0.75rem;
@@ -340,12 +318,7 @@
                             <div id="pengumuman"></div>
                             <div id="loading-post" class="text-center d-none">
                                 <div class="sync-loader-wrapper">
-                                    <div class="sync-loader-icon">
-                                        <div class="sync-loader-circle"></div>
-                                        <div class="sync-loader-inner">
-                                            <i class="fas fa-sync-alt fa-xs"></i>
-                                        </div>
-                                    </div>
+                                    <div class="pacman-loader"></div>
                                     <p class="sync-text">Syncing Dashboard...</p>
                                 </div>
                             </div>

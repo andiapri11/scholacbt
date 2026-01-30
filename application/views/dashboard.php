@@ -243,6 +243,37 @@
         font-weight: 700;
         font-size: 0.9rem;
     }
+
+    /* Pacman Loader Styling */
+    .pacman-loader-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem 0;
+    }
+    .pacman-loader {
+        width: 45px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background:
+            radial-gradient(farthest-side,#000 98%,#0000) 55% 20%/8px 8px no-repeat,  
+            #ffcc00;
+        box-shadow: 2px -6px 12px 0px inset rgba(0, 0, 0, 0.7);
+        animation: l4 .5s infinite steps(5) alternate;
+    }
+    @keyframes l4{ 
+        0% {clip-path: polygon(50% 50%,100%   0,100% 0,0 0,0 100%,100% 100%,100% 100%)}
+        100% {clip-path: polygon(50% 50%,100% 65%,100% 0,0 0,0 100%,100% 100%,100%  35%)}
+    }
+    .loader-text {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -467,8 +498,11 @@
                     </div>
                     <div class="card-body p-4">
                         <div id="pengumuman"></div>
-                        <div id="loading-post" class="text-center p-5 d-none">
-                            <i class="fas fa-spinner fa-spin fa-2x text-muted opacity-25"></i>
+                        <div id="loading-post" class="text-center d-none">
+                            <div class="pacman-loader-wrapper">
+                                <div class="pacman-loader"></div>
+                                <span class="loader-text">Memuat Pengumuman...</span>
+                            </div>
                         </div>
                         <div id="loadmore-post" onclick="getPosts()" class="text-center mt-4 d-none">
                             <button class="btn btn-outline-secondary rounded-pill btn-sm px-4">Muat Informasi Sebelumnya</button>
