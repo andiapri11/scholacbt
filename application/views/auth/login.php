@@ -230,7 +230,23 @@
             <p>Silakan masuk menggunakan akun Anda</p>
         </div>
 
-        <div id="infoMessage"><?php echo $message; ?></div>
+        <div id="infoMessage">
+            <?php if (!empty($message)): ?>
+                <script>
+                    $(document).ready(function() {
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Informasi Sesi',
+                            text: '<?= strip_tags($message) ?>',
+                            confirmButtonColor: '#3b82f6',
+                            background: '#1e293b',
+                            color: '#fff',
+                            confirmButtonText: 'Saya Mengerti'
+                        });
+                    });
+                </script>
+            <?php endif; ?>
+        </div>
 
         <?= form_open("auth/cek_login", array('id' => 'login')); ?>
             <div class="form-group-custom">
