@@ -2,7 +2,7 @@
 <!-- /.content-wrapper -->
 
 <!-- Main Footer -->
-<script src="<?= base_url() ?>/assets/app/js/jquery.marquee.min.js"></script>
+<script src="<?= base_url() ?>/assets/app/js/running-text/jquery.marquee.min.js"></script>
 <div id="running-text-container" style="position: -webkit-sticky;
 	position: sticky;
 	bottom: 0;
@@ -19,28 +19,26 @@
     <div id="running-text-siswa" class="marquee" style="overflow: hidden;"></div>
 </div>
 
-<footer class="main-footer bg-transparent border-0">
-    <div class="container">
-        <div class="text-center text-muted small font-weight-bold" style="letter-spacing: 0.3px;">
-            Copyright &copy; <span style="color: #4361ee;">ommad</span> 2026, All rights reserved.
+<footer class="main-footer bg-white border-top shadow-sm py-3" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.8) !important; margin-left: 0 !important;">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-md-left text-center">
+                <div class="text-muted small">
+                    Copyright &copy; 2026 <strong><span class="text-primary">ScholaCBT</span></strong> by <a href="https://codifi.id" target="_blank" class="text-dark font-weight-bold">Codifi.id</a>.
+                </div>
+            </div>
+            <div class="col-md-6 text-md-right text-center mt-md-0 mt-2">
+                <div class="text-muted small">
+                    All rights reserved. <span class="d-none d-sm-inline-block">| <i class="fas fa-heart text-danger"></i> untuk Pendidikan Indonesia</span>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
 
 <style>
-    /* Ensure footer looks good in all themes */
-    .theme-sepia .main-footer { border-top: 1px solid rgba(0,0,0,0.05) !important; color: #5b4636 !important; }
-    .theme-dark .main-footer { border-top: 1px solid rgba(255,255,255,0.05) !important; color: #94a3b8 !important; }
     .main-footer {
-        background: transparent !important;
-        height: 40px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border: none !important;
-        margin-left: 0 !important;
+        padding: 1rem !important;
     }
 </style>
 
