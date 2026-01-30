@@ -312,6 +312,64 @@
                 </div>
             <?php $i++; endforeach; ?>
         </div>
+        
+        <!-- Server Monitoring Row (Admin Only) -->
+        <?php if ($this->ion_auth->is_admin() && isset($system_stats)) : ?>
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="card card-modern shadow-sm border-0" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 mb-md-0 mb-3 border-right">
+                                <div class="d-flex align-items-center">
+                                    <div class="activity-icon bg-soft-primary mr-3">
+                                        <i class="fas fa-server"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 font-weight-bold">Server Health</h6>
+                                        <small class="text-muted">Real-time status</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 border-right">
+                                <div class="px-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="small font-weight-bold text-uppercase">CPU Load</span>
+                                        <span class="small font-weight-bold"><?= $system_stats['cpu_usage'] ?><?= is_numeric($system_stats['cpu_usage']) ? '%' : '' ?></span>
+                                    </div>
+                                    <div class="progress progress-xxs mb-0" style="height: 6px;">
+                                        <div class="progress-bar <?= is_numeric($system_stats['cpu_usage']) && $system_stats['cpu_usage'] > 80 ? 'bg-danger' : 'bg-primary' ?>" role="progressbar" style="width: <?= is_numeric($system_stats['cpu_usage']) ? $system_stats['cpu_usage'] : 0 ?>%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 border-right">
+                                <div class="px-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="small font-weight-bold text-uppercase">RAM Usage (<?= $system_stats['mem_total'] ?> GB)</span>
+                                        <span class="small font-weight-bold"><?= $system_stats['mem_usage'] ?><?= is_numeric($system_stats['mem_usage']) ? '%' : '' ?></span>
+                                    </div>
+                                    <div class="progress progress-xxs mb-0" style="height: 6px;">
+                                        <div class="progress-bar <?= is_numeric($system_stats['mem_usage']) && $system_stats['mem_usage'] > 80 ? 'bg-danger' : 'bg-success' ?>" role="progressbar" style="width: <?= is_numeric($system_stats['mem_usage']) ? $system_stats['mem_usage'] : 0 ?>%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <div class="px-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="small font-weight-bold text-uppercase">Disk Storage</span>
+                                        <span class="small font-weight-bold"><?= $system_stats['disk_usage'] ?>%</span>
+                                    </div>
+                                    <div class="progress progress-xxs mb-0" style="height: 6px;">
+                                        <div class="progress-bar <?= $system_stats['disk_usage'] > 90 ? 'bg-danger' : 'bg-warning' ?>" role="progressbar" style="width: <?= $system_stats['disk_usage'] ?>%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
 
         <div class="row mt-4">
             <!-- Main Column: Assessment and Announcements -->
