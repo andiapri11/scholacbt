@@ -209,29 +209,58 @@
             margin-top: 2px;
         }
         
-        /* Modern Premium Loader */
-        .loader-modern {
+        /* Sync Dashboard Loader */
+        .sync-loader-wrapper {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            height: 48px;
-            margin: 15px auto;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem 0;
         }
-        .loader-dot {
-            width: 14px;
-            height: 14px;
-            background: linear-gradient(135deg, #4361ee 0%, #3b82f6 100%);
+        .sync-loader-icon {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sync-loader-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid #f1f5f9;
+            border-top: 4px solid #4361ee;
             border-radius: 50%;
-            animation: dot-bounce 0.6s infinite alternate;
-            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+            animation: sync-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
         }
-        .loader-dot:nth-child(2) { animation-delay: 0.2s; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
-        .loader-dot:nth-child(3) { animation-delay: 0.4s; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); }
-
-        @keyframes dot-bounce {
-            from { transform: translateY(0) scale(0.8); opacity: 0.4; }
-            to { transform: translateY(-15px) scale(1.1); opacity: 1; }
+        .sync-loader-inner {
+            width: 30px;
+            height: 30px;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4361ee;
+            animation: sync-pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes sync-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes sync-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        .sync-text {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin: 0;
         }
     </style>
 
@@ -309,13 +338,16 @@
                         </div>
                         <div class="card-body p-4">
                             <div id="pengumuman"></div>
-                            <div id="loading-post" class="text-center d-none py-5">
-                                <div class="loader-modern mb-4">
-                                    <div class="loader-dot"></div>
-                                    <div class="loader-dot"></div>
-                                    <div class="loader-dot"></div>
+                            <div id="loading-post" class="text-center d-none">
+                                <div class="sync-loader-wrapper">
+                                    <div class="sync-loader-icon">
+                                        <div class="sync-loader-circle"></div>
+                                        <div class="sync-loader-inner">
+                                            <i class="fas fa-sync-alt fa-xs"></i>
+                                        </div>
+                                    </div>
+                                    <p class="sync-text">Syncing Dashboard...</p>
                                 </div>
-                                <p class="text-muted font-weight-bold uppercase tracking-widest" style="font-size: 10px;">Syncing Dashboard...</p>
                             </div>
                         </div>
                     </div>
