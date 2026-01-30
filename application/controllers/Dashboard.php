@@ -44,7 +44,7 @@ class Dashboard extends CI_Controller {
             // Additional data for Admin Dashboard
             $data['jadwals_ujian'] = $this->cbt->getAllJadwal($tp->id_tp, $smt->id_smt);
             $data['ruangs'] = $this->cbt->getRuangSesi($tp->id_tp, $smt->id_smt);
-            $data['pengawas'] = $this->cbt->totalPengawas();
+            $data['pengawas'] = $this->dashboard->totalPengawas();
             $data['gurus'] = $this->dropdown->getAllGuru();
             $data['ada_ujian'] = $this->cbt->getJadwalCbtKelas($tp->id_tp, $smt->id_smt);
             
