@@ -20,7 +20,8 @@ COPY . /var/www/html
 # Ensure uploads directory is clean and has correct permissions
 RUN mkdir -p /var/www/html/uploads && \
     chown -R www-data:www-data /var/www/html && \
-    chmod -R 775 /var/www/html/application/cache /var/www/html/application/logs /var/www/html/uploads
+    chmod -R 755 /var/www/html/application/cache /var/www/html/application/logs && \
+    chmod -R 777 /var/www/html/uploads
 
 # Expose port 80
 EXPOSE 80
