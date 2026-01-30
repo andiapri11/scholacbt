@@ -3,9 +3,18 @@
 
 <!-- Main Footer -->
 <footer class="main-footer bg-white border-top shadow-sm py-3" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.8) !important;">
-    <div class="container-fluid text-center">
-        <div class="text-muted small">
-            Copyright &copy; <span class="font-weight-bold text-primary">ommad</span> 2026, All rights reserved.
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-md-left text-center">
+                <div class="text-muted small">
+                    Copyright &copy; 2026 <strong><span class="text-primary">ScholaCBT</span></strong> by <a href="https://codifi.id" target="_blank" class="text-dark font-weight-bold">Codifi.id</a>.
+                </div>
+            </div>
+            <div class="col-md-6 text-md-right text-center mt-md-0 mt-2">
+                <div class="text-muted small">
+                    All rights reserved. <span class="d-none d-sm-inline-block">| <i class="fas fa-heart text-danger"></i> untuk Pendidikan Indonesia</span>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
