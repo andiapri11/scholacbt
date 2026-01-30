@@ -22,7 +22,8 @@ class Session_check {
             $current_session_id = session_id();
 
             // Compare local session ID with the one in database
-            if ($user->session_id !== null && $user->session_id !== $current_session_id) {
+            // Safety check for migration
+            if (property_exists($user, 'session_id') && $user->session_id !== null && $user->session_id !== $current_session_id) {
                 // Kick out!
                 $CI->ion_auth->logout();
                 $CI->session->set_flashdata('message', 'Sesi Anda telah berakhir karena login di perangkat lain.');
