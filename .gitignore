@@ -18,3 +18,14 @@ application/logs/*
 /orm/
 #/vendor/
 /nbproject/private/
+uploads/*
+!uploads/index.html
+!uploads/bank_soal/index.html
+!uploads/file_siswa/index.html
+!uploads/foto_siswa/index.html
+!uploads/import/index.html
+!uploads/materi/index.html
+!uploads/profiles/index.html
+!uploads/settings/index.html
+!uploads/temp/index.html
+!uploads/tugas/index.html

@@ -17,14 +17,10 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . /var/www/html
 
-# Set permissions for CodeIgniter folders
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 755 /var/www/html/application/cache
-RUN chmod -R 755 /var/www/html/application/logs
-RUN chmod -R 755 /var/www/html/uploads
+# Ensure uploads directory is clean and has correct permissions
+RUN mkdir -p /var/www/html/uploads && \
+    chown -R www-data:www-data /var/www/html && \
+    chmod -R 775 /var/www/html/application/cache /var/www/html/application/logs /var/www/html/uploads
 
-# Configure Apache DocumentRoot to point to project root (default is /var/www/html)
-# If index.php is in public folder, change this accordingly. 
-# Assuming index.php is at root based on CodeIgniter 3 structure.
-
+# Expose port 80
 EXPOSE 80
