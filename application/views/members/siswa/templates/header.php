@@ -341,12 +341,4 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
         </div>
     </nav>
 
-    <script type="text/javascript">
-        const isLogin = localStorage.getItem('scholaCBT.login')
-        const isCbtMode = isLogin ? isLogin === '1' : false
-        if (isCbtMode) {
-            if ('<?= $cbt ?>' === 'cbt') {
-                $('#back').addClass('d-none')
-            }
-        }
-    </script>
+
