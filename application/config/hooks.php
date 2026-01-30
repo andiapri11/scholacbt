@@ -17,3 +17,10 @@ $hook['post_controller'] = array(       // post_controller menunjukan eksekusi h
     'filename' => 'Db_log.php',     // Nama File Hook
     'filepath' => 'hooks'           // nama folder tempat file hook disimpan
 );
+
+$hook['post_controller_constructor'][] = array(
+    'class'    => 'Session_check',
+    'function' => 'check_session',
+    'filename' => 'Session_check.php',
+    'filepath' => 'hooks'
+);

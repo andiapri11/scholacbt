@@ -22,7 +22,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 $config['url_suffix'] = '';
 $config['language']	= 'indonesian';
 $config['charset'] = 'UTF-8';
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 //$config['enable_hooks'] = TRUE;
 $config['subclass_prefix'] = 'MY_';
 
@@ -102,7 +102,7 @@ $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200 * 12; // 1 jam
 $config['sess_save_path'] = sys_get_temp_dir();
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 3000;
+$config['sess_time_to_update'] = 28800;
 $config['sess_regenerate_destroy'] = FALSE;
 
 /*
