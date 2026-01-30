@@ -17,11 +17,19 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . /var/www/html
 
-# Ensure uploads directory is clean and has correct permissions
-RUN mkdir -p /var/www/html/uploads && \
+# Ensure necessary directories exist and have correct permissions
+RUN mkdir -p /var/www/html/uploads/settings \
+    /var/www/html/uploads/foto_siswa \
+    /var/www/html/uploads/bank_soal \
+    /var/www/html/uploads/import \
+    /var/www/html/uploads/materi \
+    /var/www/html/uploads/tugas \
+    /var/www/html/uploads/profiles \
+    /var/www/html/uploads/temp \
+    /var/www/html/backups && \
     chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html/application/cache /var/www/html/application/logs && \
-    chmod -R 777 /var/www/html/uploads
+    chmod -R 777 /var/www/html/uploads /var/www/html/backups
 
 # Expose port 80
 EXPOSE 80
