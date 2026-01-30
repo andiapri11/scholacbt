@@ -1,13 +1,22 @@
 <?php
 /**
- * ScholaCBT - Auto Migration Script
+ * ScholaCBT - Auto Migration Script (Fixed)
  * Use this to add session_id column without phpMyAdmin
  */
-define('BASEPATH', 'foo'); // Dummy for CI files
+define('BASEPATH', 'foo'); 
+define('ENVIRONMENT', 'production'); // Fix for database.php
+
 require_once('application/config/database.php');
 
 $db_config = $db['default'];
-$mysqli = new mysqli($db_config['hostname'], $db_config['username'], $db_config['password'], $db_config['database']);
+
+// Handle environment variables if used in database.php
+$host = getenv('DB_HOST') ?: $db_config['hostname'];
+$user = getenv('DB_USERNAME') ?: $db_config['username'];
+$pass = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : $db_config['password'];
+$name = getenv('DB_DATABASE') ?: $db_config['database'];
+
+$mysqli = new mysqli($host, $user, $pass, $name);
 
 if ($mysqli->connect_errno) {
     die("Failed to connect to MySQL: " . $mysqli->connect_error);
@@ -27,5 +36,5 @@ if ($result->num_rows == 0) {
 }
 
 $mysqli->close();
-echo "<p>Please delete this file (migrate_db.php) after use for security reasons.</p>";
+echo "<hr><p>Please delete this file (migrate_db.php) after use for security reasons.</p>";
 ?>
