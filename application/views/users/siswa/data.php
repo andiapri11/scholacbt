@@ -189,7 +189,7 @@
             let nama = $(this).data("nama").replace("'", "");
             $('#loading').removeClass('d-none');
             $.ajax({
-                url: base_url + "usersiswa/deactivate/" + username +"/"+nama,
+                url: base_url + "usersiswa/deactivate?username=" + username + "&nama=" + encodeURIComponent(nama),
                 type: "GET",
                 success: function (response) {
                     $('#loading').addClass('d-none');
@@ -226,7 +226,7 @@
             let nama = encodeURIComponent($(this).data("nama"));
             $('#loading').removeClass('d-none');
             $.ajax({
-                url: base_url + "usersiswa/reset_login/" + username +"/"+nama,
+                url: base_url + "usersiswa/reset_login?username=" + username + "&nama=" + nama,
                 type: "GET",
                 success: function (response) {
                     $('#loading').addClass('d-none');
