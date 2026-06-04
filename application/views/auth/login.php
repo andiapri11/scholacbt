@@ -183,7 +183,7 @@
         font-weight: 600;
     }
 
-    #infoMessage .info-box {
+    #infoMessage .login-info-box {
         padding: 12px 16px;
         border-radius: 12px;
         font-size: 0.85rem;
@@ -291,7 +291,7 @@
             e.stopImmediatePropagation();
 
             var infobox = $('#infoMessage');
-            infobox.html('<div class="info-box" style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #93c5fd;">Memverifikasi Akun...</div>');
+            infobox.html('<div class="login-info-box" style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #93c5fd;">Memverifikasi Akun...</div>');
 
             var btnsubmit = $('#submit');
             var originalBtnText = btnsubmit.html();
@@ -303,7 +303,7 @@
                 data: $(this).serialize(),
                 success: function(data){
                     if(data.status){
-                        infobox.html('<div class="info-box" style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); color: #86efac;">Login Berhasil! Mengalihkan...</div>');
+                        infobox.html('<div class="login-info-box" style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); color: #86efac;">Login Berhasil! Mengalihkan...</div>');
                         
                         localStorage.setItem('scholaCBT.login', '1')
                         let go = base_url + data.url;
@@ -314,7 +314,7 @@
                     } else {
                         btnsubmit.removeAttr('disabled').html(originalBtnText);
                         if(data.failed){
-                            infobox.html('<div class="info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5;">' + data.failed + '</div>');
+                            infobox.html('<div class="login-info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5;">' + data.failed + '</div>');
                         }
                         if(data.invalid){
                             $.each(data.invalid, function(key, val){
@@ -327,7 +327,7 @@
                 },
                 error: function() {
                     btnsubmit.removeAttr('disabled').html(originalBtnText);
-                    infobox.html('<div class="info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5;">Kesalahan Server. Coba lagi.</div>');
+                    infobox.html('<div class="login-info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5;">Kesalahan Server. Coba lagi.</div>');
                 }
             });
         });

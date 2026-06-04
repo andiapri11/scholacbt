@@ -22,11 +22,11 @@
                         </h6>
                     </div>
                     <div class="card-tools d-flex align-items-center">
-                        <button type="button" class="btn btn-soft-success rounded-pill btn-sm mr-2 shadow-sm" data-action="aktifkan"
+                        <button type="button" class="btn btn-action btn-soft-success rounded-pill btn-sm mr-2 shadow-sm" data-action="aktifkan"
                                 data-toggle="tooltip" title="Aktifkan Semua">
                             <i class="fas fa-user-check mr-1"></i><span class="d-none d-sm-inline-block">Aktifkan Semua</span>
                         </button>
-                        <button type="button" class="btn btn-soft-danger rounded-pill btn-sm shadow-sm" data-action="nonaktifkan"
+                        <button type="button" class="btn btn-action btn-soft-danger rounded-pill btn-sm shadow-sm" data-action="nonaktifkan"
                                 data-toggle="tooltip" title="Nonaktifkan Semua">
                             <i class="fas fa-user-slash mr-1"></i><span class="d-none d-sm-inline-block">Nonaktifkan Semua</span>
                         </button>

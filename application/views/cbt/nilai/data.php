@@ -115,7 +115,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                         <div class="d-none" id="info">
                             <div id="info-ujian"></div>
                         </div>
-                        <div <?= $dnone ?>>
+                        <div>
                             <?= form_open('', array('id' => 'koreksi-semua')) ?>
                             <table class="table table-sm table-modern-list" id="table-status" data-cols-width="<?= $colWidth ?>">
                                 <thead class="header-blue text-white">
