@@ -21,6 +21,7 @@
 				</h6>
 				<?php
         $no = 1;
+        if (isset($tp) && (is_array($tp) || is_object($tp))) :
         foreach ($tp as $row) : ?>
 					<div class="dropdown-divider"></div>
 					<?= form_hidden('id_tp[' . $no . ']', $row->id_tp) ?>
@@ -37,6 +38,7 @@
 					<?php
             $no++;
         endforeach;
+        endif;
         ?>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item text-center text-black" href="#">
@@ -58,6 +60,7 @@
 				</h6>
 				<?php
         $no = 1;
+        if (isset($smt) && (is_array($smt) || is_object($smt))) :
         foreach ($smt as $r) : ?>
 					<div class="dropdown-divider"></div>
 					<?= form_hidden('id_smt[' . $no . ']', $r->id_smt) ?>
@@ -73,6 +76,7 @@
 					<?php
             $no++;
         endforeach;
+        endif;
         ?>
 			</div>
 			<?= form_close() ?>
