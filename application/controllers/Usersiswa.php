@@ -4,4 +4,305 @@
     |    #    |
     |________________________________________|
 */
- defined("\x42\101\123\105\x50\x41\x54\x48") or exit("\x4e\x6f\40\x64\x69\x72\145\x63\x74\40\x73\x63\x72\x69\x70\164\x20\141\x63\x63\x65\x73\163\x20\141\154\x6c\x6f\167\145\x64"); class Usersiswa extends CI_Controller { public function __construct() { goto ypdkX; c5h7G: if ($this->ion_auth->logged_in()) { goto TlZzp; } goto GWb8j; GWb8j: redirect("\141\x75\164\x68"); goto JKhNo; ypdkX: parent::__construct(); goto c5h7G; zX4CK: $this->form_validation->set_error_delimiters('', ''); goto CJuCC; x2ho0: $this->load->model("\x55\x73\145\x72\x73\x5f\155\x6f\x64\x65\x6c", "\165\163\x65\x72\x73"); goto MTeZP; JKhNo: TlZzp: goto VT7GJ; PZ4jA: $this->load->model("\x44\x61\x73\x68\x62\x6f\x61\x72\144\x5f\x6d\x6f\x64\x65\x6c", "\144\x61\x73\x68\x62\x6f\x61\x72\x64"); goto zX4CK; VT7GJ: $this->load->library(["\144\x61\x74\x61\x74\141\142\154\145\x73", "\x66\x6f\x72\x6d\137\166\x61\154\x69\x64\x61\x74\151\x6f\156"]); goto x2ho0; MTeZP: $this->load->model("\115\x61\x73\x74\145\x72\x5f\155\x6f\x64\x65\x6c", "\x6d\141\x163\x74\x65\x72"); goto PZ4jA; CJuCC: } public function is_has_access() { goto vL7eW; vL7eW: $user_id = $this->ion_auth->user()->row()->id; goto XU4aA; NaE4t: if (!(!$group === "\141\x64\x6d\151\x6e" or !$group === "\x67\165\162\x75")) { goto j2FPd; } goto In0i_; XU4aA: $group = $this->ion_auth->get_users_groups($user_id)->row()->name; goto NaE4t; In0i_: show_error("\110\x61\156\x79\x61\40\x41\144\x6d\151\x6e\151\x63\x74\x72\x61\x74\x6f\x72\40\171\x61\x6e\147\40\x64\151\142\x65\x72\x69\x20\x68\141\x6b\x20\x75\x6e\x74\165\x6b\40\x6d\145\x6e\x67\x61\x6b\x73\x65\163\x20\150\x61\154\141\x6d\x61\x6e\40\x69\156\x69\x2c\40\74\x61\40\x68\x72\x65\x66\75\x22" . base_url("\144\x61\x73\x68\x62\x6f\x61\x72\x64") . "\42\x3e\113\x65\155\x62\141\154\151\x20\x6b\x65\40\x6d\x65\x6e\x75\x20\141\x77\x61\x6c\74\x2f\x61\x3e", 403, "\x41\153\x73\145\x63\x20\124\x65\x72\154\x61\x72\x61\156\x67"); goto MakNR; MakNR: j2FPd: goto Cj3RM; Cj3RM: } public function output_json($data, $encode = true) { goto rMPbh; Ty2Be: $this->output->set_content_type("\x61\x70\x70\x6c\151\143\x61\x74\151\x6f\x6e\x2f\152\x73\x6f\156")->set_output($data); goto zL_Tr; rMPbh: if (!$encode) { goto Sktx2; } goto BoIF2; eB9y6: Sktx2: goto Ty2Be; BoIF2: $data = json_encode($data); goto eB9y6; zL_Tr: } public function data() { goto PQD4p; KlHTY: $smt = $this->dashboard->getSemesterActive(); goto XnhQS; PQD4p: $this->is_has_access(); goto uAcZI; uAcZI: $tp = $this->dashboard->getTahunActive(); goto KlHTY; XnhQS: $this->output_json($this->users->getUserSiswa($tp->id_tp, $smt->id_smt), false); goto w2pAJ; w2pAJ: } public function index() { goto Yo8eI; KKouY: $data["\163\155\164\x5f\141\143\164\x69\166\145"] = $this->dashboard->getSemesterActive(); goto rJogO; rJogO: $this->load->view("\x5f\164\x65\155\x70\154\x61\x74\145\x73\x2f\144\x61\x73\x68\x62\x6f\x61\x72\144\x2f\x5f\150\x65\x61\144\x65\162", $data); goto P1lvE; P1lvE: $this->load->view("\x75\x73\x65\x72\x73\x2f\x73\151\x73\x77\x61\x5f\x64\x61\164\x61"); goto L3koZ; DK106: $data = ["\x75\x73\x65\x72" => $user, "\152\x75\x64\x65\x6c" => "\x55\x73\x65\x72\x20\x4d\x61\x6e\x61\x67\x65\155\x65\x6e\x74", "\163\x75\x62\x6a\x75\x64\x65\x6c" => "\x44\x61\x74\x61\x20\125\x73\x65\x72\x20\123\151\x73\x77\x61", "\x70\x72\x6f\x66\x69\154\145" => $this->dashboard->getProfileAdmin($user->id), "\163\x65\164\164\151\x6e\x67" => $this->dashboard->getSetting()]; goto aG4lt; aG4lt: $data["\164\x70"] = $this->dashboard->getTahun(); goto yZ6FM; yZ6FM: $data["\164\x70\x5f\x61\x63\x74\151\x76\x45"] = $this->dashboard->getTahunActive(); goto GMZlu; gzpPc: $user = $this->ion_auth->user()->row(); goto DK106; L3koZ: $this->load->view("\x5f\164\x65\x6d\160\154\x61\x74\x145\x73\x2f\144\x61\x73\x68\x62\x6f\x61\x72\x64\x2f\x5f\x66\x6f\x6f\x74\145\x72"); goto tNStr; Yo8eI: $this->is_has_access(); goto gzpPc; GMZlu: $data["\163\155\x74"] = $this->dashboard->getSemester(); goto KKouY; tNStr: } public function list() { goto NV1Je; ru9vX: $limit = $this->input->post("\154\x69\x6d\x69\164", true); goto w88E8; I2fH7: $smt = $this->dashboard->getSemesterActive(); goto b2705; C1Uiy: $data = ["\154\151\163\164\x73" => $lists, "\164\x6f\164\141\x6c" => $count_siswa, "\x70\x61\x67\x65\x73" => ceil($count_siswa / $limit), "\x73\x65\x61\162\x63\x68" => $search, "\x70\x65\x72\160\x61\x67\x65" => $limit]; goto B4Ay2; B4Ay2: $this->output_json($data); goto Gp8fv; w88E8: $search = $this->input->post("\x73\145\141\162\143\x68", true); goto RSKDZ; RSKDZ: $offset = ($page - 1) * $limit; goto z69AY; jj7V4: $lists = $this->users->getUserSiswaPage($tp->id_tp, $smt->id_smt, $offset, $limit, $search); goto C1Uiy; z69AY: $tp = $this->dashboard->getTahunActive(); goto I2fH7; b2705: $count_siswa = $this->users->getUserSiswaTotalPage($search); goto jj7V4; NV1Je: $page = $this->input->post("\x70\x61\x67\x65", true); goto ru9vX; Gp8fv: } private function registerSiswa($username, $password, $email, $additional_data, $group) { goto TtxV0; TKc8s: if (!($reg == false)) { goto lm2uY; } goto Tm5mt; QmWjQ: $data["\x69\144"] = $reg; goto TKc8s; dPL29: return $data; goto Eb1iR; Z7UKT: lm2uY: goto dPL29; tS_yw: $data["\163\164\x61\x74\165\x73"] = true; goto QmWjQ; Tm5mt: $data["\x73\x74\x61\164\x75\x73"] = false; goto Z7UKT; TtxV0: $reg = $this->ion_auth->register($username, $password, $email, $additional_data, $group); goto tS_yw; Eb1iR: } private function aktifkan($siswa) { goto OQNaD; GdoBl: $user_siswa = $this->db->get_where("\165\x73\x65\x72\x73", "\x65\x6d\x61\x69\x6c\x3d\x22" . $email . "\x22")->row(); goto yQNOW; yQNOW: $deleted = true; goto UqVig; yEjig: $group = array("\x33"); goto GdoBl; D1r9q: $deleted = $this->ion_auth->delete_user($user_siswa->id); goto gofsd; tS_K2: return $data; goto H5051; g_SYh: $username = trim($siswa->username ?? ''); goto Wip62; IUYvv: if ($deleted) { goto AZpsI; } goto H6Wl0; efI6l: jCa0j: goto tS_K2; VClp_: $data = ["\163\x74\x61\x74\x75\x73" => $reg, "\155\x73\x67" => !$reg ? "\x41\x6b\x75\x6e\x20" . $siswa->nama . "\x20\x67\x61\x67\x61\x6c\x20\x64\x69\x61\x6b\x74\x69\x66\x6b\x61\x6e\x2e" : "\x41\x6b\x75\x6e\x20" . $siswa->nama . "\x20\x64\x69\x61\x6b\x74\x69\x66\x6b\x61\x6e\x2e"]; goto efI6l; BL07a: $email = $siswa->nis . "\x40\x73\x69\x73\x77\x61\x2e\x63\x6f\x6d"; goto RXwWN; mkFSq: goto jCa0j; goto QMMRr; CjqKy: $reg = $this->registerSiswa($username, $password, $email, $additional_data, $group); goto VClp_; RXwWN: $additional_data = ["\x66\x69\x72\x73\x74\x5f\x6e\x61\x6d\x65" => $first_name, "\154\x61\x73\x74\x5f\x6e\x61\x6d\x65" => $last_name]; goto yEjig; H6Wl0: $data = ["\x73\x74\x61\x74\x75\x73" => false, "\x6d\x73\x67" => "\x41\x6b\x75\x6e\x20\x73\x69\x73\x77\x61\x20\x74\x69\x64\x61\x6b\x20\x74\x65\x72\x73\x65\x64\x69\x61\x20\x28\x73\x75\x64\x61\x68\x20\x64\x69\x67\x75\x6e\x61\x6b\x61\x29\x2e"]; goto mkFSq; iaWdF: $last_name = end($nama); goto g_SYh; QMMRr: AZpsI: goto CjqKy; JBrFN: $first_name = $nama[0]; goto iaWdF; Wip62: $password = trim($siswa->password ?? ''); goto BL07a; UqVig: if (!($user_siswa != null)) { goto tkDYA; } goto D1r9q; OQNaD: $nama = explode("\x20", $siswa->nama ?? ''); goto JBrFN; gofsd: tkDYA: goto IUYvv; H5051: } public function activate($id) { goto frQxo; nN5jb: $data = $this->aktifkan($siswa); goto Fwsai; frQxo: $siswa = $this->users->getDataSiswa($id); goto nN5jb; Fwsai: $this->output_json($data); goto ZC63B; ZC63B: } public function aktifkanSemua() { goto YYdWA; mOt3T: $data = ["\x73\x74\x61\x74\x75\x73" => true, "\x6a\x75\x6d\x6c\x61\x68" => $jum, "\x6d\x73\x67" => $jum . "\x20\x73\x69\x73\x77\x61\x20\x64\x69\x61\x6b\x74\x69\x66\x73\x61\x6e\x2e"]; goto KCahR; T8sQU: $jum = 0; goto Hapsv; Hapsv: foreach ($siswaAktif as $siswa) { goto AbwVO; AbwVO: if (!($siswa->aktif == 0)) { goto VRe5G; } goto YLo5K; YLo5K: $this->aktifkan($siswa); goto xTX7b; vhxVf: VRe5G: goto r81ar; xTX7b: $jum += 1; goto vhxVf; r81ar: L12lf: goto MsKdw; MsKdw: } goto M9WZ_; KCahR: $this->output_json($data); goto SguiX; M9WZ_: MqDJs: goto mOt3T; YYdWA: $siswaAktif = $this->users->getSiswaAktif(); goto T8sQU; SguiX: } private function nonaktifkan($user, $nama) { goto C0y01; v0W_q: if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin()) { goto OzaoK; } goto fRcYV; rn2hL: $data = ["\163\x74\x61\x74\x75\x73" => false, "\x6d\x73\x67" => "\x59\x6f\x75\x20\x6d\x75\x73\x74\x20\x62\x65\x20\x61\x6e\x20\x61\x64\x6d\x69\x6e\x69\x73\x74\x72\x61\x74\x6f\x72\x20\x74\x6f\x20\x76\x69\x65\x77\x20\x74\x68\x69\x73\x20\x70\x61\x67\x65\x2e"]; goto HnkUh; yj9bg: OzaoK: goto WTPL0; ulkai: return $data; goto f2Sjx; HnkUh: o87w2: goto ulkai; SF56C: cDco3: goto rn2hL; SzU1I: n3ZEd: goto zxCRn; zxCRn: goto o87w2; goto SF56C; WTPL0: $deleted = $this->ion_auth->delete_user($user->id); goto Qa8pF; Qa8pF: $data = ["\163\x74\x61\x74\x75\x73" => $deleted, "\x6d\x73\x67" => $deleted ? "\x53\x69\x73\x77\x61\x20" . urldecode($nama) . "\x20\x64\x69\x6e\x6f\x6e\x61\x6b\x74\x69\x66\x73\x61\x6e\x2e" : "\x53\x69\x73\x77\x61\x20" . urldecode($nama) . "\x20\x64\x69\x6e\x6f\x6e\x61\x6b\x74\x69\x66\x73\x61\x6e\x2e"]; goto SzU1I; fRcYV: $data = ["\163\x74\x61\x74\x75\x73" => false, "\x6d\x73\x67" => "\x41\x6e\x64\x61\x20\x62\x65\x6b\x61\x6e\x20\x61\x64\x6d\x69\x6e\x2e"]; goto YyMhz; C0y01: if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) { goto cDco3; } goto v0W_q; YyMhz: goto n3ZEd; goto yj9bg; f2Sjx: } public function deactivate() { $username = $this->input->get('username', true); $nama = $this->input->get('nama', true); if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) { $data = ["status" => false, "msg" => "You must be an administrator to view this page."]; } else { $user = $this->users->getUsers($username); $data = $this->nonaktifkan($user, $nama); } $this->output_json($data, true); } public function reset_login() { $username = $this->input->get('username', true); $nama = $this->input->get('nama', true); if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) { $data = ["status" => false, "msg" => "You must be an administrator to view this page."]; } else { $this->db->where("login", $username); if ($this->db->delete("login_attempts")) { $data = ["status" => true, "msg" => "User " . $nama . " berhasil direset"]; } else { $data = ["status" => false, "msg" => "User " . $nama . " gagal direset"]; } } $this->output_json($data, true); } public function nonaktifkanSemua() { goto XlPzV; XlPzV: $siswaAktif = $this->users->getSiswaAktif(); goto RoK1A; PBUv4: $this->output_json($data); goto VNnLY; Gbt0l: WEM0C: goto UxaHy; UxaHy: $data = ["\163\x74\x61\x74\x75\x73" => true, "\x6a\x75\x6d\x6c\x61\x68" => $jum, "\x6d\x73\x67" => $jum . "\x20\x73\x69\x73\x77\x61\x20\x64\x69\x6e\x6f\x6e\x61\x6b\x74\x69\x66\x6b\x61\x6e\x2e"]; goto PBUv4; RoK1A: $jum = 0; goto d93nZ; d93nZ: foreach ($siswaAktif as $siswa) { goto SGkrW; PzlEP: Leat0: goto j6w81; PKe4S: $jum += 1; goto PzlEP; zGxc4: $del = $this->nonaktifkan($siswa, $siswa->nama); goto JV9LY; j6w81: DHg1a: goto ZNDbB; JV9LY: if ($del["\163\x74\x61\x74\x75\x73"]) { goto CTCFf; } goto HHdE1; TAytX: goto Leat0; goto bgREC; ZNDbB: O2PCs: goto yV0t5; HHdE1: $this->output_json($del); goto TAytX; SGkrW: if (!($siswa->aktif > 0)) { goto DHg1a; } goto zGxc4; bgREC: CTCFf: goto PKe4S; yV0t5: } goto Gbt0l; VNnLY: } public function edit($id) { goto nHxna; pHnah: $data = ["\x75\x73\x65\x72" => $user, "\x6a\x75\x64\x75\x6c" => "\x55\x73\x65\x72\x20\x4d\x61\x6e\x61\x67\x65\x6d\x65\x6e\x74", "\163\x75\x62\x6a\x75\x64\x75\x74" => "\x45\x64\x69\x74\x20\x44\x61\x74\x61\x20\x55\x73\x65\x72", "\x73\x65\x74\x74\x69\x6e\x67" => $this->dashboard->getSetting()]; goto TTzkT; ci55L: Qyl6g: goto AQrJg; EntIH: $this->load->view("\x6d\x65\x6d\x62\x65\x72\x73\x2f\x67\x75\x72\x75\x2f\x74\x65\x6d\x70\x6c\x61\x74\x65\x73\x2f\x66\x6f\x6f\x74\x65\x72"); goto dTc7b; SYxPD: $data["\x74\x70\x5f\x61\x63\x74\x69\x76\x65"] = $tp; goto I4ZMD; LYS9c: $this->load->view("\x75\x73\x65\x72\x73\x2f\x73\x69\x73\x77\x61\x2f\x65\x64\x69\x74"); goto LbvYC; K1EpR: $user = $this->ion_auth->user()->row(); goto pHnah; nHxna: $tp = $this->dashboard->getTahunActive(); goto zqsWR; wUKnx: if ($this->ion_auth->is_admin()) { goto OlPa4; } goto AJhXH; l8ocf: $siswa = $this->master->getDataSiswaById($tp->id_tp, $smt->id_smt, $id); goto K1EpR; TTzkT: $data["\x73\x69\x73\x77\x61"] = $siswa; goto dXUbv; dTc7b: goto Qyl6g; goto sVo0H; LbvYC: $this->load->view("\x5f\x74\x65\x6d\x70\x6c\x61\x74\x65\x73\x2f\x64\x61\x73\x68\x62\x6f\x61\x72\x64\x2f\x5f\x66\x6f\x6f\x74\x65\x72"); goto ci55L; sVo0H: OlPa4: goto ysBXq; VD2rK: $this->load->view("\x75\x73\x65\x72\x73\x2f\x73\x69\x73\x77\x61\x2f\x65\x64\x69\x74"); goto EntIH; dXUbv: $data["\x74\x70"] = $this->dashboard->getTahun(); goto SYxPD; ysBXq: $data["\x70\x72\x6f\x66\x69\x6c\x65"] = $this->dashboard->getProfileAdmin($user->id); goto N0Klk; LwBgu: $data["\x67\x75\x72\x75"] = $guru; goto jDq6L; N0Klk: $this->load->view("\x5f\x74\x65\x6d\x70\x6c\x61\x74\x65\x73\x2f\x64\x61\x73\x68\x62\x6f\x61\x72\x64\x2f\x5f\x68\x65\x61\x64\x65\x72", $data); goto LYS9c; AJhXH: $guru = $this->dashboard->getDataGuruByUserId($user->id, $tp->id_tp, $smt->id_smt); goto LwBgu; jDq6L: $this->load->view("\x6d\x65\x6d\x62\x65\x72\x73\x2f\x67\x75\x72\x75\x2f\x74\x65\x6d\x70\x6c\x61\x74\x65\x73\x2f\x68\x65\x61\x64\x65\x72", $data); goto VD2rK; I4ZMD: $data["\x73\x6d\x74"] = $this->dashboard->getSemester(); goto T_85f; zqsWR: $smt = $this->dashboard->getSemesterActive(); goto l8ocf; T_85f: $data["\x73\x6d\x74\x5f\x61\x63\x74\x69\x76\x65"] = $smt; goto wUKnx; AQrJg: } public function update() { goto KrgTb; FFmvH: $oldPass = $this->input->post("\x6f\x6c\x64", true); goto Xuf80; KrgTb: $id_siswa = $this->input->post("\x69\x64\x5f\x73\x69\x73\x77\x61", true); goto kY5nh; dLV4_: $this->form_validation->set_rules("\x6f\x6c\x64", "\x50\x61\x73\x73\x77\x6f\x72\x64\x20\x4c\x61\x6d\x61", "\x72\x65\x71\x75\x69\x72\x65\x64\x7c\x6e\x75\x6d\x65\x72\x69\x63\x7c\x74\x72\x69\x6d\x7c\x6d\x69\x6e\x2e\x6c\x65\x6e\x67\x74\x68\x5b\x36\x5d"); goto Ubmee; qPkff: $this->form_validation->set_rules("\x75\x73\x65\x72\x6e\x61\x6d\x65", "\x55\x73\x65\x72\x6e\x61\x6d\x65", "\x72\x65\x71\x75\x69\x72\x65\x64\x7c\x6e\x75\x6d\x65\x72\x69\x63\x7c\x74\x72\x69\x6d\x7c\x6d\x69\x6e\x2e\x6c\x65\x6e\x67\x74\x68\x5b\x36\x5d\x7c\x69\x73\x5f\x75\x6e\x69\x71\x75\x65\x5b\x6d\x61\x73\x74\x65\x72\x5f\x73\x69\x73\x77\x61\x2e\x75\x73\x65\x72\x6e\x61\x6d\x65\x5d"); goto dLV4_; Ubmee: $this->form_validation->set_rules("\x6e\x65\x77", "\x50\x61\x73\x73\x77\x6f\x72\x64\x20\x42\x61\x72\x75", "\x72\x65\x71\x75\x69\x72\x65\x64\x7c\x6e\x75\x6d\x65\x72\x69\x63\x7c\x74\x72\x69\x6d\x7c\x6d\x69\x6e\x2e\x6c\x65\x6e\x67\x74\x68\x5b\x36\x5d"); goto o9dz2; kY5nh: $username = $this->input->post("\x75\x73\x65\x72\x6e\x61\x6d\x65", true); goto FFmvH; Xuf80: $newPass = $this->input->post("\x6e\x65\x77", true); goto qPkff; o9dz2: } public function change_password() { goto M3lH2; zTq31: $data = ["\x73\x74\x61\x74\x75\x73" => false, "\x65\x72\x72\x6f\x72\x73" => ["\x6f\x6c\x64" => form_error("\x6f\x6c\x64"), "\x6e\x65\x77" => form_error("\x6e\x65\x77"), "\x6e\x65\x77\x5f\x63\x6f\x6e\x66\x69\x72\x6d" => form_error("\x6e\x65\x77\x5f\x63\x6f\x6e\x66\x69\x72\x6d")]]; goto XmST6; Rz2B5: if ($change) { goto iPROx; } goto xW_es; emLUG: goto MAno3; goto P0K9H; IXQ9S: $this->form_validation->set_rules("\x6e\x65\x77", $this->lang->line("\x63\x68\x61\x6e\x67\x65\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x5f\x76\x61\x6c\x69\x64\x61\x74\x69\x6f\x6e\x5f\x6e\x65\x77\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x5f\x6c\x61\x62\x65\x6c"), "\x72\x65\x71\x75\x69\x72\x65\x64\x7c\x6d\x69\x6e\x5f\x6c\x65\x6e\x67\x74\x68\x5b" . $this->config->item("\x6d\x69\x6e\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x5f\x6c\x65\x6e\x67\x74\x68", "\x69\x6f\x6e\x5f\x61\x75\x74\x68") . "\x5d\x7c\x6d\x61\x74\x63\x68\x65\x73\x5b\x6e\x65\x77\x5f\x63\x6f\x6e\x66\x69\x72\x6d\x5d"); goto nCVoD; v_aHa: GUk4N: goto zTq31; AmRLh: if ($this->form_validation->run() === FALSE) { goto GUk4N; } goto BW6rj; BW6rj: $identity = $this->session->userdata("\x69\x64\x65\x6e\x74\x69\x74\x79"); goto TVRvO; KE1lF: $this->output_json($data); goto u3jDQ; TVRvO: $change = $this->ion_auth->change_password($identity, $this->input->post("\x6f\x6c\x64"), $this->input->post("\x6e\x65\x77")); goto Rz2B5; P0K9H: iPROx: goto g3Pil; hz8OB: MAno3: goto h0diP; h0diP: goto RInqS; goto v_aHa; xW_es: $data = ["\x73\x74\x61\x74\x75\x73" => false, "\x6d\x73\x67" => $this->ion_auth->errors()]; goto emLUG; nCVoD: $this->form_validation->set_rules("\x6e\x65\x77\x5f\x63\x6f\x6e\x66\x69\x72\x6d", $this->lang->line("\x63\x68\x61\x6e\x67\x65\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x5f\x76\x61\x6c\x69\x64\x61\x74\x69\x6f\x6e\x5f\x6e\x65\x77\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x5f\x63\x6f\x6e\x66\x69\x72\x6d\x5f\x6c\x61\x62\x65\x6c"), "\x72\x65\x71\x75\x69\x72\x65\x64"); goto AmRLh; XmST6: RInqS: goto KE1lF; g3Pil: $data["\x73\x74\x61\x74\x75\x73"] = true; goto hz8OB; M3lH2: $this->form_validation->set_rules("\x6f\x6c\x64", $this->lang->line("\x63\x68\x61\x6e\x67\x65\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x5f\x76\x61\x6c\x69\x64\x61\x74\x69\x6f\x6e\x5f\x6f\x6c\x64\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x5f\x6c\x61\x62\x65\x6c"), "\x72\x65\x71\x75\x69\x72\x65\x64"); goto IXQ9S; u3jDQ: } public function delete($id) { goto nORhy; WzohH: $this->output_json($data); goto FohRg; nORhy: $this->is_has_access(); goto akqBq; akqBq: $data["\x73\x74\x61\x74\x75\x73"] = $this->ion_auth->delete_user($id) ? true : false; goto WzohH; FohRg: } private function hash_password($password) { goto SFcUK; UBQLw: Iweyb: goto FNpNV; SFcUK: if (!(empty($password) || strpos($password, "\0") !== FALSE || strlen($password) > 4096)) { goto Iweyb; } goto ocUfd; FNpNV: return password_hash($password, PASSWORD_BCRYPT); goto thXWe; ocUfd: return FALSE; goto UBQLw; thXWe: } }
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Usersiswa extends CI_Controller {
+
+    public function __construct() {
+        parent::__construct();
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth');
+        }
+        $this->load->library(['datatables', 'form_validation']);
+        $this->load->model('Users_model', 'users');
+        $this->load->model('Master_model', 'master');
+        $this->load->model('Dashboard_model', 'dashboard');
+        $this->form_validation->set_error_delimiters('', '');
+    }
+
+    public function is_has_access() {
+        $user_id = $this->ion_auth->user()->row()->id;
+        $group = $this->ion_auth->get_users_groups($user_id)->row()->name;
+        if ($group !== 'admin' && $group !== 'guru') {
+            show_error(
+                "Hanya Administrator yang diberi hak untuk mengakses halaman ini, <a href=\"" . base_url('dashboard') . "\">Kembali ke menu awal</a>",
+                403,
+                "Akses Terlarang"
+            );
+        }
+    }
+
+    public function output_json($data, $encode = true) {
+        if ($encode) {
+            $data = json_encode($data);
+        }
+        $this->output->set_content_type('application/json')->set_output($data);
+    }
+
+    public function data() {
+        $this->is_has_access();
+        $tp = $this->dashboard->getTahunActive();
+        $smt = $this->dashboard->getSemesterActive();
+        $this->output_json($this->users->getUserSiswa($tp->id_tp, $smt->id_smt), false);
+    }
+
+    public function index() {
+        $this->is_has_access();
+        $user = $this->ion_auth->user()->row();
+        $data = [
+            "user" => $user,
+            "judul" => "User Management",
+            "subjudul" => "Data User Siswa",
+            "profile" => $this->dashboard->getProfileAdmin($user->id),
+            "setting" => $this->dashboard->getSetting()
+        ];
+        $data["tp"] = $this->dashboard->getTahun();
+        $data["tp_active"] = $this->dashboard->getTahunActive();
+        $data["smt"] = $this->dashboard->getSemester();
+        $data["smt_active"] = $this->dashboard->getSemesterActive();
+
+        $this->load->view("_templates/dashboard/_header", $data);
+        $this->load->view("users/siswa/data");
+        $this->load->view("_templates/dashboard/_footer");
+    }
+
+    public function list() {
+        $page = $this->input->post("page", true);
+        $limit = $this->input->post("limit", true);
+        $search = $this->input->post("search", true);
+        $offset = ($page - 1) * $limit;
+        
+        $tp = $this->dashboard->getTahunActive();
+        $smt = $this->dashboard->getSemesterActive();
+        $count_siswa = $this->users->getUserSiswaTotalPage($search);
+        $lists = $this->users->getUserSiswaPage($tp->id_tp, $smt->id_smt, $offset, $limit, $search);
+
+        $data = [
+            "lists" => $lists,
+            "total" => $count_siswa,
+            "pages" => ceil($count_siswa / $limit),
+            "search" => $search,
+            "perpage" => $limit
+        ];
+        $this->output_json($data);
+    }
+
+    private function registerSiswa($username, $password, $email, $additional_data, $group) {
+        $reg = $this->ion_auth->register($username, $password, $email, $additional_data, $group);
+        if ($reg == false) {
+            $data["status"] = false;
+        } else {
+            $data["status"] = true;
+            $data["id"] = $reg;
+        }
+        return $data;
+    }
+
+    private function aktifkan($siswa) {
+        $nama = explode(" ", $siswa->nama ?? '');
+        $first_name = $nama[0];
+        $last_name = end($nama);
+        $username = trim($siswa->username ?? '');
+        $password = trim($siswa->password ?? '');
+        $email = $siswa->nis . "@siswa.com";
+        $additional_data = [
+            "first_name" => $first_name,
+            "last_name" => $last_name
+        ];
+        $group = array("3");
+        
+        $user_siswa = $this->db->get_where("users", "email=\"" . $email . "\"")->row();
+        $deleted = true;
+        if ($user_siswa != null) {
+            $deleted = $this->ion_auth->delete_user($user_siswa->id);
+        }
+        
+        if ($deleted) {
+            $reg = $this->registerSiswa($username, $password, $email, $additional_data, $group);
+            $data = [
+                "status" => $reg,
+                "msg" => !$reg ? "Akun " . $siswa->nama . " gagal diaktifkan." : "Akun " . $siswa->nama . " diaktifkan."
+            ];
+        } else {
+            $data = [
+                "status" => false,
+                "msg" => "Akun siswa tidak tersedia (sudah digunakan)."
+            ];
+        }
+        return $data;
+    }
+
+    public function activate($id) {
+        $siswa = $this->users->getDataSiswa($id);
+        $data = $this->aktifkan($siswa);
+        $this->output_json($data);
+    }
+
+    public function aktifkanSemua() {
+        $siswaAktif = $this->users->getSiswaAktif();
+        $jum = 0;
+        foreach ($siswaAktif as $siswa) {
+            if ($siswa->aktif == 0) {
+                $this->aktifkan($siswa);
+                $jum += 1;
+            }
+        }
+        $data = [
+            "status" => true,
+            "jumlah" => $jum,
+            "msg" => $jum . " siswa diaktifkan."
+        ];
+        $this->output_json($data);
+    }
+
+    private function nonaktifkan($user, $nama) {
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+            $data = [
+                "status" => false,
+                "msg" => "You must be an administrator to view this page."
+            ];
+        } else {
+            $deleted = $this->ion_auth->delete_user($user->id);
+            $data = [
+                "status" => $deleted,
+                "msg" => $deleted ? "Siswa " . urldecode($nama) . " dinonaktifkan." : "Siswa " . urldecode($nama) . " dinonaktifkan."
+            ];
+        }
+        return $data;
+    }
+
+    public function deactivate() {
+        $username = $this->input->get('username', true);
+        $nama = $this->input->get('nama', true);
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+            $data = ["status" => false, "msg" => "You must be an administrator to view this page."];
+        } else {
+            $user = $this->users->getUsers($username);
+            $data = $this->nonaktifkan($user, $nama);
+        }
+        $this->output_json($data, true);
+    }
+
+    public function reset_login() {
+        $username = $this->input->get('username', true);
+        $nama = $this->input->get('nama', true);
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+            $data = ["status" => false, "msg" => "You must be an administrator to view this page."];
+        } else {
+            $this->db->where("login", $username);
+            if ($this->db->delete("login_attempts")) {
+                $data = ["status" => true, "msg" => "User " . $nama . " berhasil direset"];
+            } else {
+                $data = ["status" => false, "msg" => "User " . $nama . " gagal direset"];
+            }
+        }
+        $this->output_json($data, true);
+    }
+
+    public function nonaktifkanSemua() {
+        $siswaAktif = $this->users->getSiswaAktif();
+        $jum = 0;
+        foreach ($siswaAktif as $siswa) {
+            if ($siswa->aktif > 0) {
+                $del = $this->nonaktifkan($siswa, $siswa->nama);
+                if ($del["status"]) {
+                    $jum += 1;
+                } else {
+                    $this->output_json($del);
+                    return;
+                }
+            }
+        }
+        $data = [
+            "status" => true,
+            "jumlah" => $jum,
+            "msg" => $jum . " siswa dinonaktifkan."
+        ];
+        $this->output_json($data);
+    }
+
+    public function edit($id) {
+        $tp = $this->dashboard->getTahunActive();
+        $smt = $this->dashboard->getSemesterActive();
+        $siswa = $this->master->getDataSiswaById($tp->id_tp, $smt->id_smt, $id);
+        $user = $this->ion_auth->user()->row();
+        
+        $data = [
+            "user" => $user,
+            "judul" => "User Management",
+            "subjudul" => "Edit Data User",
+            "setting" => $this->dashboard->getSetting(),
+            "siswa" => $siswa
+        ];
+        $data["tp"] = $this->dashboard->getTahun();
+        $data["tp_active"] = $tp;
+        $data["smt"] = $this->dashboard->getSemester();
+        $data["smt_active"] = $smt;
+        
+        if ($this->ion_auth->is_admin()) {
+            $data["profile"] = $this->dashboard->getProfileAdmin($user->id);
+            $this->load->view("_templates/dashboard/_header", $data);
+            $this->load->view("users/siswa/edit");
+            $this->load->view("_templates/dashboard/_footer");
+        } else {
+            $guru = $this->dashboard->getDataGuruByUserId($user->id, $tp->id_tp, $smt->id_smt);
+            $data["guru"] = $guru;
+            $this->load->view("members/guru/templates/header", $data);
+            $this->load->view("users/siswa/edit");
+            $this->load->view("members/guru/templates/footer");
+        }
+    }
+
+    public function update() {
+        $id_siswa = $this->input->post("id_siswa", true);
+        $username = $this->input->post("username", true);
+        $oldPass = $this->input->post("old", true);
+        $newPass = $this->input->post("new", true);
+        
+        $this->form_validation->set_rules("username", "Username", "required|numeric|trim|min_length[6]|is_unique[master_siswa.username]");
+        $this->form_validation->set_rules("old", "Password Lama", "required|numeric|trim|min_length[6]");
+        $this->form_validation->set_rules("new", "Password Baru", "required|numeric|trim|min_length[6]");
+    }
+
+    public function change_password() {
+        $this->form_validation->set_rules("old", $this->lang->line("change_password_validation_old_password_label"), "required");
+        $this->form_validation->set_rules("new", $this->lang->line("change_password_validation_new_password_label"), "required|min_length[" . $this->config->item("min_password_length", "ion_auth") . "]|matches[new_confirm]");
+        $this->form_validation->set_rules("new_confirm", $this->lang->line("change_password_validation_new_password_confirm_label"), "required");
+        
+        if ($this->form_validation->run() === FALSE) {
+            $data = [
+                "status" => false,
+                "errors" => [
+                    "old" => form_error("old"),
+                    "new" => form_error("new"),
+                    "new_confirm" => form_error("new_confirm")
+                ]
+            ];
+        } else {
+            $identity = $this->session->userdata("identity");
+            $change = $this->ion_auth->change_password($identity, $this->input->post("old"), $this->input->post("new"));
+            if ($change) {
+                $data["status"] = true;
+            } else {
+                $data = [
+                    "status" => false,
+                    "msg" => $this->ion_auth->errors()
+                ];
+            }
+        }
+        $this->output_json($data);
+    }
+
+    public function delete($id) {
+        $this->is_has_access();
+        $data["status"] = $this->ion_auth->delete_user($id) ? true : false;
+        $this->output_json($data);
+    }
+
+    private function hash_password($password) {
+        if (empty($password) || strpos($password, "\0") !== FALSE || strlen($password) > 4096) {
+            return FALSE;
+        }
+        return password_hash($password, PASSWORD_BCRYPT);
+    }
+}
