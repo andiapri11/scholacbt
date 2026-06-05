@@ -116,20 +116,25 @@
                                                         : [];
 
                                                     $badge_kelas = '';
-                                                    $total_peserta = 0;
+                                                    $total_peserta = 0;                                                     
                                                     foreach ($jadwal as $jdw) {
-                                                        $bank_kelass = $jdw->bank_kelas;
-                                                        foreach ($bank_kelass as $bank_kelas) {
-                                                            foreach ($jdw->peserta as $peserta) {
-                                                                $cnt = isset($peserta[$ruang]) && isset($peserta[$ruang][$sesi->sesi_id]) ?
-                                                                    count($peserta[$ruang][$sesi->sesi_id]) : 0;
-                                                                if ($bank_kelas['kelas_id'] != null && $cnt > 0) {
-                                                                    $total_peserta += $cnt;
-                                                                    $badge_kelas .= ' <span class="badge badge-soft-info badge-pill ml-1">' . $kelases[$bank_kelas['kelas_id']] . ' (' . $cnt . ')</span>';
-                                                                }
-                                                            }
-                                                        }
-                                                    }
+                                                         $bank_kelass = $jdw->bank_kelas;
+                                                         if (is_string($bank_kelass)) {
+                                                             $bank_kelass = unserialize($bank_kelass ?? '');
+                                                         }
+                                                         if (is_array($bank_kelass) || is_object($bank_kelass)) {
+                                                             foreach ($bank_kelass as $bank_kelas) {
+                                                                 foreach ($jdw->peserta as $peserta) {
+                                                                     $cnt = isset($peserta[$ruang]) && isset($peserta[$ruang][$sesi->sesi_id]) ?
+                                                                         count($peserta[$ruang][$sesi->sesi_id]) : 0;
+                                                                     if ($bank_kelas['kelas_id'] != null && $cnt > 0) {
+                                                                         $total_peserta += $cnt;
+                                                                         $badge_kelas .= ' <span class="badge badge-soft-info badge-pill ml-1">' . $kelases[$bank_kelas['kelas_id']] . ' (' . $cnt . ')</span>';
+                                                                     }
+                                                                 }
+                                                             }
+                                                         }
+                                                     }
 
                                                     if ($total_peserta > 0) :
                                                         ?>
