@@ -124,12 +124,15 @@
                                                          }
                                                          if (is_array($bank_kelass) || is_object($bank_kelass)) {
                                                              foreach ($bank_kelass as $bank_kelas) {
-                                                                 foreach ($jdw->peserta as $peserta) {
-                                                                     $cnt = isset($peserta[$ruang]) && isset($peserta[$ruang][$sesi->sesi_id]) ?
-                                                                         count($peserta[$ruang][$sesi->sesi_id]) : 0;
-                                                                     if ($bank_kelas['kelas_id'] != null && $cnt > 0) {
-                                                                         $total_peserta += $cnt;
-                                                                         $badge_kelas .= ' <span class="badge badge-soft-info badge-pill ml-1">' . $kelases[$bank_kelas['kelas_id']] . ' (' . $cnt . ')</span>';
+                                                                 $pesertas = isset($jdw->peserta) ? $jdw->peserta : [];
+                                                                 if (is_array($pesertas) || is_object($pesertas)) {
+                                                                     foreach ($pesertas as $peserta) {
+                                                                         $cnt = isset($peserta[$ruang]) && isset($peserta[$ruang][$sesi->sesi_id]) ?
+                                                                             count($peserta[$ruang][$sesi->sesi_id]) : 0;
+                                                                         if ($bank_kelas['kelas_id'] != null && $cnt > 0) {
+                                                                             $total_peserta += $cnt;
+                                                                             $badge_kelas .= ' <span class="badge badge-soft-info badge-pill ml-1">' . $kelases[$bank_kelas['kelas_id']] . ' (' . $cnt . ')</span>';
+                                                                         }
                                                                      }
                                                                  }
                                                              }

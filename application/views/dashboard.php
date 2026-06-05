@@ -455,11 +455,14 @@
                                                     : [];
 
                                                 $total_peserta = 0;
-                                                foreach ($jadwal as $jdw) {
-                                                    foreach ($jdw->peserta as $peserta) {
-                                                        $total_peserta += isset($peserta[$ruang]) && isset($peserta[$ruang][$sesi->sesi_id]) ? count($peserta[$ruang][$sesi->sesi_id]) : 0;
-                                                    }
-                                                }
+                                                 foreach ($jadwal as $jdw) {
+                                                     $pesertas = isset($jdw->peserta) ? $jdw->peserta : [];
+                                                     if (is_array($pesertas) || is_object($pesertas)) {
+                                                         foreach ($pesertas as $peserta) {
+                                                             $total_peserta += isset($peserta[$ruang]) && isset($peserta[$ruang][$sesi->sesi_id]) ? count($peserta[$ruang][$sesi->sesi_id]) : 0;
+                                                         }
+                                                     }
+                                                 }
 
                                                 if ($total_peserta > 0) :
                                                     ?>
