@@ -80,13 +80,21 @@ function sortByPosition($a, $b)
                                     <div class="teaching-assignments mb-4 p-3 rounded-lg" style="background: #f8fafc; border: 1px solid #edf2f7;">
                                         <h6 class="small font-weight-bold text-muted uppercase mb-3" style="font-size: 0.65rem; letter-spacing: 0.5px">Pengampu:</h6>
                                         <div class="assignments-list" style="max-height: 120px; overflow-y: auto;">
-                                            <?php foreach ($mapels_guru as $mapel) : 
-                                                $kls_guru = '';
-                                                foreach ($mapel->kelas_mapel as $kls_mpl) {
-                                                    if (isset($kelass[$kls_mpl->kelas])) $kls_guru .= $kelass[$kls_mpl->kelas]->nama_kelas . ', ';
-                                                }
-                                                $kls_guru = rtrim($kls_guru, ', ');
-                                            ?>
+                                             <?php foreach ($mapels_guru as $mapel) : 
+                                                 $kls_guru = '';
+                                                 foreach ($mapel->kelas_mapel as $kls_mpl) {
+                                                     $kelas_obj = null;
+                                                     if (isset($kelass[$tp_active->id_tp][$smt_active->id_smt][$kls_mpl->kelas])) {
+                                                         $kelas_obj = $kelass[$tp_active->id_tp][$smt_active->id_smt][$kls_mpl->kelas];
+                                                     } elseif (isset($kelass[$kls_mpl->kelas]) && is_object($kelass[$kls_mpl->kelas])) {
+                                                         $kelas_obj = $kelass[$kls_mpl->kelas];
+                                                     }
+                                                     if ($kelas_obj) {
+                                                         $kls_guru .= $kelas_obj->nama_kelas . ', ';
+                                                     }
+                                                 }
+                                                 $kls_guru = rtrim($kls_guru, ', ');
+                                             ?>
                                             <div class="assignment-item d-flex align-items-center mb-2">
                                                 <div class="assignment-icon mr-2 bg-primary-soft text-primary">
                                                     <i class="fas fa-book-open"></i>
@@ -98,13 +106,21 @@ function sortByPosition($a, $b)
                                             </div>
                                             <?php endforeach; ?>
                                             
-                                            <?php foreach ($ekstras_guru as $ekstra) : 
-                                                $kls_eks_str = '';
-                                                foreach ($ekstra->kelas_ekstra as $kls_eks) {
-                                                    if (isset($kelass[$kls_eks->kelas])) $kls_eks_str .= $kelass[$kls_eks->kelas]->nama_kelas . ', ';
-                                                }
-                                                $kls_eks_str = rtrim($kls_eks_str, ', ');
-                                            ?>
+                                             <?php foreach ($ekstras_guru as $ekstra) : 
+                                                 $kls_eks_str = '';
+                                                 foreach ($ekstra->kelas_ekstra as $kls_eks) {
+                                                     $kelas_obj = null;
+                                                     if (isset($kelass[$tp_active->id_tp][$smt_active->id_smt][$kls_eks->kelas])) {
+                                                         $kelas_obj = $kelass[$tp_active->id_tp][$smt_active->id_smt][$kls_eks->kelas];
+                                                     } elseif (isset($kelass[$kls_eks->kelas]) && is_object($kelass[$kls_eks->kelas])) {
+                                                         $kelas_obj = $kelass[$kls_eks->kelas];
+                                                     }
+                                                     if ($kelas_obj) {
+                                                         $kls_eks_str .= $kelas_obj->nama_kelas . ', ';
+                                                     }
+                                                 }
+                                                 $kls_eks_str = rtrim($kls_eks_str, ', ');
+                                             ?>
                                             <div class="assignment-item d-flex align-items-center mb-2">
                                                 <div class="assignment-icon mr-2 bg-success-soft text-success">
                                                     <i class="fas fa-running"></i>
