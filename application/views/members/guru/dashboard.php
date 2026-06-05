@@ -25,7 +25,7 @@
                         <div class="icon-box">
                             <i class="fas fa-key"></i>
                         </div>
-                        <h5 id="token-main-view"><?= $token->token != null ? $token->token : '- - -' ?></h5>
+                        <h5 id="token-main-view"><?= (isset($token) && $token && isset($token->token)) ? $token->token : '- - -' ?></h5>
                         <span>TOKEN AKTIF</span>
                     </div>
                 </div>

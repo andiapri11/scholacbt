@@ -39,7 +39,13 @@ class Dashboard extends CI_Controller {
             $data['info_box'] = $this->admin_box($setting, $tp->id_tp, $smt->id_smt);
             $data['ujian_box'] = $this->ujian_box();
             $data['profile'] = $this->dashboard->getProfileAdmin($user->id);
-            $data['token'] = $this->cbt->getToken();
+            $token = $this->cbt->getToken();
+            $data['token'] = $token != null ? $token : (object)[
+                'token' => '-',
+                'auto' => '0',
+                'jarak' => '1',
+                'elapsed' => '00:00:00'
+            ];
 
             // Additional data for Admin Dashboard
             $data['jadwals_ujian'] = $this->cbt->getAllJadwal($tp->id_tp, $smt->id_smt);
@@ -62,6 +68,18 @@ class Dashboard extends CI_Controller {
                 $data['info_box'] = $this->guru_box($setting);
                 $data['ujian_box'] = $this->ujian_box();
                 $data['guru'] = $guru;
+                $token = $this->cbt->getToken();
+                $data['token'] = $token != null ? $token : (object)[
+                    'token' => '-',
+                    'auto' => '0',
+                    'jarak' => '1',
+                    'elapsed' => '00:00:00'
+                ];
+                $data['jadwals_ujian'] = $this->cbt->getAllJadwalByJenis(null, $tp->id_tp, $smt->id_smt);
+                $data['ruangs'] = $this->cbt->getDistinctRuang($tp->id_tp, $smt->id_smt, []);
+                $data['pengawas'] = $this->cbt->getAllPengawas($tp->id_tp, $smt->id_smt, null, null);
+                $data['gurus'] = $this->dropdown->getAllGuru();
+                $data['kelases'] = $this->dropdown->getAllKelas($tp->id_tp, $smt->id_smt);
                 $this->load->view('members/guru/templates/header', $data);
                 $this->load->view('members/guru/dashboard');
                 $this->load->view('members/guru/templates/footer');
