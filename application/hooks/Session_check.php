@@ -19,6 +19,15 @@ class Session_check {
         // Only check if user is logged in
         if ($CI->ion_auth->logged_in()) {
             $user = $CI->ion_auth->user()->row();
+            
+            // Check if user exists in database and is active
+            if ($user === null || $user->active == 0) {
+                $CI->ion_auth->logout();
+                $CI->session->set_flashdata('message', 'Sesi Anda telah berakhir atau akun Anda telah dinonaktifkan.');
+                redirect('auth/login');
+                return;
+            }
+
             $current_session_id = session_id();
 
             // Compare local session ID with the one in database

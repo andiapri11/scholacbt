@@ -93,7 +93,7 @@ class Auth extends CI_Controller {
                 } else {
                     $data = [
                         'status' => false,
-                        'failed' => 'Incorrect Login',
+                        'failed' => $this->ion_auth->errors(),
                         'akses' => 'no attempts'
                     ];
                 }
