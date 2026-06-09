@@ -97,10 +97,10 @@ $config['encryption_key'] = '498f8140edc311eb94b9c83dd4416dc8';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200 * 12; // 1 jam
-$config['sess_save_path'] = sys_get_temp_dir();
+$config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 28800;
 $config['sess_regenerate_destroy'] = FALSE;
